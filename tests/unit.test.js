@@ -308,16 +308,16 @@ describe('lib/mail getFromAddress()', () => {
 
   test('uses SMTP_USER as From for Gmail when SMTP_FROM domain mismatches', () => {
     process.env.SMTP_HOST = 'smtp.gmail.com';
-    process.env.SMTP_USER = 'selectaiinnovations@gmail.com';
+    process.env.SMTP_USER = 'info@selectai.it.com';
     process.env.SMTP_FROM = 'SelectAI <noreply@selectai.it.com>';
-    expect(mail.getFromAddress()).toBe('SelectAI <selectaiinnovations@gmail.com>');
+    expect(mail.getFromAddress()).toBe('SelectAI <info@selectai.it.com>');
   });
 
   test('keeps SMTP_FROM when it matches SMTP_USER on Gmail', () => {
     process.env.SMTP_HOST = 'smtp.gmail.com';
-    process.env.SMTP_USER = 'selectaiinnovations@gmail.com';
-    process.env.SMTP_FROM = 'SelectAI <selectaiinnovations@gmail.com>';
-    expect(mail.getFromAddress()).toBe('SelectAI <selectaiinnovations@gmail.com>');
+    process.env.SMTP_USER = 'info@selectai.it.com';
+    process.env.SMTP_FROM = 'SelectAI <info@selectai.it.com>';
+    expect(mail.getFromAddress()).toBe('SelectAI <info@selectai.it.com>');
   });
 });
 

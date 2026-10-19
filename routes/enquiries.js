@@ -2,6 +2,7 @@
 const router    = require('express').Router();
 const { createLimiter } = require('../lib/rateLimit');
 const Enquiry   = require('../models/Enquiry');
+const mail      = require('../lib/mail');
 
 /* 5 submissions per hour per IP (unlimited in test env) */
 const enqLimiter = createLimiter({
@@ -36,7 +37,37 @@ router.post('/', enqLimiter, async (req, res, next) => {
       message: message.trim()
     });
 
-    res.status(201).json({ ok: true, id: enquiry._id });
+    try {
+      await mail.send({
+        to: 'info@selectai.it.com',
+        subject: `New Website Enquiry - ${name.trim()}`,
+        html: `
+          <h2>New Website Enquiry</h2>
+          <p><strong>Name:</strong> ${name.trim()}</p>
+          <p><strong>Email:</strong> ${email.trim()}</p>
+          <p><strong>Phone:</strong> ${(phone || '').trim()}</p>
+          <p><strong>Company:</strong> ${(company || '').trim()}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.trim()}</p>
+        `
+      });
+
+      console.log(`[SelectAI Enquiry] Email sent to info@selectai.it.com for enquiry ${enquiry._id}`);
+
+      res.status(201).json({
+        ok: true,
+        id: enquiry._id,
+        emailSent: true
+      });
+    } catch (mailErr) {
+      console.error('[SelectAI Enquiry] Email failed:', mailErr.message);
+
+      res.status(201).json({
+        ok: true,
+        id: enquiry._id,
+        emailSent: false
+      });
+    }
   } catch (err) {
     next(err);
   }

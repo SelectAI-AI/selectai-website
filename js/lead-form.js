@@ -50,7 +50,7 @@
   function toMailto(payload) {
     var subject = encodeURIComponent('New Lead Inquiry - ' + payload.company);
     var body = encodeURIComponent(toLeadText(payload));
-    window.location.href = 'mailto:selectaiinnovations@gmail.com?subject=' + subject + '&body=' + body;
+    window.location.href = 'mailto:info@selectai.it.com?subject=' + subject + '&body=' + body;
   }
 
   async function sendToEndpoint(payload) {

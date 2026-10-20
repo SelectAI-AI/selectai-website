@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>html { visibility: hidden; }</style>
+  <script src="js/app-config.js?v=20260912"></script>
+  <script src="js/routes.js?v=20260912"></script>
+  <script src="js/auth-guard.js?v=20260912"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Engineering Kits — SelectAI Innovations</title>
+  <meta name="description" content="Applied AI Engineering kits from SelectAI — modular, hands-on learning paths covering LangChain, agents, databases, deployment, and more. Start free, enroll at learn.selectai.it.com." />
+  <meta name="keywords" content="AI engineering kits, applied AI, LangChain, AI training, SelectAI Innovations, learn AI" />
+  <meta name="author" content="SelectAI Innovations" />
+  <meta property="og:title" content="AI Engineering Kits — SelectAI Innovations" />
+  <meta property="og:description" content="Modular, project-driven AI engineering kits for working professionals. Pick your stack, build real things, earn kit credentials." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/logo-mark-black.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Engineering Kits — SelectAI" />
+  <meta name="twitter:description" content="Modular, project-driven AI engineering kits for working professionals." />
+  <link rel="icon" type="image/png" href="assets/images/logo-mark.png" />
+  <link rel="stylesheet" href="css/style.css?v=20260912" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Brand light-theme tokens ─────────────────────────── */
+    :root {
+      --ak-pink:        #FF1493;
+      --ak-magenta:     #EC00E8;
+      --ak-purple:      #9900FF;
+      --ak-blue:        #1677FF;
+      --ak-cyan:        #00CFFF;
+      --ak-bg-main:     #F9FBFF;
+      --ak-bg-pink:     #FFE5F7;
+      --ak-bg-lavender: #F2E6FF;
+      --ak-bg-blue:     #E3F8FF;
+      --ak-bg-card:     #FFFFFF;
+      --ak-text:        #080B45;
+      --ak-text-2:      #42547B;
+      --ak-border:      #DCE5F5;
+      --ak-grad:        linear-gradient(100deg, #FF1493, #EC00E8, #9900FF);
+      --ak-grad-hero:   linear-gradient(115deg, #FFE5F7 0%, #F9FBFF 48%, #E3F8FF 100%);
+      --ak-grad-text:   linear-gradient(90deg, #FF1493, #9900FF, #1677FF);
+      --ak-shadow:      0 8px 28px rgba(35, 31, 100, 0.08);
+      --ak-shadow-lg:   0 16px 48px rgba(35, 31, 100, 0.13);
+    }
+
+    /* ─── Page reset for light theme ───────────────────────── */
+    .kits-page {
+      background: var(--ak-grad-hero);
+      color: var(--ak-text);
+      min-height: 100vh;
+    }
+
+    /* Navbar override — light surface */
+    .kits-page .navbar {
+      background: rgba(249, 251, 255, 0.9);
+      border-bottom: 1px solid var(--ak-border);
+    }
+    .kits-page .navbar.scrolled {
+      background: rgba(249, 251, 255, 0.97);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 2px 20px rgba(35, 31, 100, 0.07);
+    }
+    .kits-page .nav-links a {
+      color: var(--ak-text);
+    }
+    .kits-page .nav-links a:hover,
+    .kits-page .nav-links a[aria-current="page"] {
+      color: var(--ak-pink);
+    }
+    .kits-page .hamburger span {
+      background: var(--ak-text);
+    }
+    .kits-page .nav-signin-btn {
+      color: var(--ak-blue);
+      border-color: var(--ak-blue);
+    }
+    .kits-page .scroll-progress {
+      background: var(--ak-grad);
+    }
+
+    /* ─── Hero ──────────────────────────────────────────────── */
+    .kits-hero {
+      position: relative;
+      min-height: calc(100vh - 82px);
+      display: flex;
+      align-items: center;
+      padding: 6rem 0 5rem;
+      overflow: hidden;
+    }
+
+    .kits-hero-orbs {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .kits-hero-orbs .korb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.55;
+    }
+    .korb-1 { width: 420px; height: 420px; top: -80px; left: -100px; background: rgba(255, 20, 147, 0.18); }
+    .korb-2 { width: 360px; height: 360px; top: 5%; right: -80px; background: rgba(153, 0, 255, 0.14); }
+    .korb-3 { width: 300px; height: 300px; bottom: -60px; left: 40%; background: rgba(0, 207, 255, 0.13); }
+
+    .kits-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .kits-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .kits-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ak-pink);
+      margin-bottom: 1.5rem;
+    }
+    .kits-eyebrow::before,
+    .kits-eyebrow::after {
+      content: '';
+      display: block;
+      width: 38px;
+      height: 1px;
+      background: var(--ak-pink);
+      opacity: 0.6;
+    }
+
+    .kits-hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--ak-text);
+      margin: 0 0 1.25rem;
+    }
+
+    .kits-grad-text {
+      background: var(--ak-grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .kits-hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--ak-text-2);
+      margin-bottom: 2.2rem;
+      max-width: 520px;
+    }
+
+    .kits-hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .kits-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--ak-grad);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.8rem 1.8rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .kits-btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(153, 0, 255, 0.28);
+    }
+
+    .kits-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+      color: var(--ak-blue);
+      border: 2px solid var(--ak-blue);
+      border-radius: 10px;
+      padding: 0.76rem 1.8rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .kits-btn-outline:hover {
+      background: var(--ak-blue);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Hero stats strip */
+    .kits-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.8rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--ak-border);
+      flex-wrap: wrap;
+    }
+    .kits-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .kits-stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: var(--ak-grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .kits-stat-label {
+      font-size: 0.78rem;
+      color: var(--ak-text-2);
+    }
+
+    /* Hero card panel */
+    .kits-hero-panel {
+      background: var(--ak-bg-card);
+      border: 1px solid var(--ak-border);
+      border-radius: 20px;
+      box-shadow: var(--ak-shadow-lg);
+      padding: 2rem;
+      position: relative;
+    }
+    .kits-hero-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,20,147,0.04) 0%, rgba(153,0,255,0.04) 100%);
+      pointer-events: none;
+    }
+    .kits-panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.4rem;
+    }
+    .kits-panel-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ak-purple);
+      background: var(--ak-bg-lavender);
+      border-radius: 6px;
+      padding: 0.25rem 0.7rem;
+    }
+    .kits-panel-badge {
+      font-size: 0.72rem;
+      color: var(--ak-blue);
+      font-weight: 600;
+    }
+    .kits-panel-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ak-text);
+      margin: 0 0 0.7rem;
+    }
+    .kits-panel-desc {
+      font-size: 0.88rem;
+      color: var(--ak-text-2);
+      line-height: 1.6;
+      margin: 0 0 1.5rem;
+    }
+    .kits-panel-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .kits-panel-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.88rem;
+      color: var(--ak-text);
+    }
+    .kits-panel-list li .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-pink   { background: var(--ak-pink); }
+    .dot-purple { background: var(--ak-purple); }
+    .dot-blue   { background: var(--ak-blue); }
+    .dot-cyan   { background: var(--ak-cyan); }
+    .dot-mag    { background: var(--ak-magenta); }
+
+    /* ─── Section base (light theme) ───────────────────────── */
+    .kits-section {
+      padding: 90px 0;
+      position: relative;
+    }
+    .kits-section-alt {
+      background: rgba(255,255,255,0.6);
+    }
+    .kits-section-pink {
+      background: var(--ak-bg-pink);
+    }
+    .kits-section-lavender {
+      background: var(--ak-bg-lavender);
+    }
+    .kits-section-blue {
+      background: var(--ak-bg-blue);
+    }
+
+    .kits-section-hd {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .kits-section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ak-pink);
+      border: 1px solid rgba(255,20,147,0.25);
+      border-radius: 20px;
+      padding: 0.28rem 0.9rem;
+      margin-bottom: 0.9rem;
+    }
+    .kits-section-hd h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      color: var(--ak-text);
+      margin: 0 0 0.8rem;
+      line-height: 1.2;
+    }
+    .kits-section-hd p {
+      font-size: 1rem;
+      color: var(--ak-text-2);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ─── Program overview cards ────────────────────────────── */
+    .kits-overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .kits-overview-card {
+      background: var(--ak-bg-card);
+      border: 1px solid var(--ak-border);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: var(--ak-shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .kits-overview-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--ak-shadow-lg);
+    }
+    .kits-overview-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.1rem;
+    }
+    .icon-bg-pink     { background: var(--ak-bg-pink); }
+    .icon-bg-lavender { background: var(--ak-bg-lavender); }
+    .icon-bg-blue     { background: var(--ak-bg-blue); }
+    .kits-overview-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ak-text);
+      margin: 0 0 0.6rem;
+    }
+    .kits-overview-card p {
+      font-size: 0.9rem;
+      color: var(--ak-text-2);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ─── Kit catalog cards ─────────────────────────────────── */
+    .kits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .kit-card {
+      background: var(--ak-bg-card);
+      border: 1px solid var(--ak-border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--ak-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .kit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+    .kit-card--pink::before   { background: linear-gradient(90deg, #FF1493, #EC00E8); }
+    .kit-card--purple::before { background: linear-gradient(90deg, #EC00E8, #9900FF); }
+    .kit-card--blue::before   { background: linear-gradient(90deg, #9900FF, #1677FF); }
+    .kit-card--cyan::before   { background: linear-gradient(90deg, #1677FF, #00CFFF); }
+    .kit-card--mixed::before  { background: var(--ak-grad); }
+    .kit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--ak-shadow-lg);
+    }
+
+    .kit-card-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      font-weight: 600;
+      color: var(--ak-text-2);
+      text-transform: uppercase;
+    }
+    .kit-card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ak-text);
+      margin: 0;
+      line-height: 1.3;
+    }
+    .kit-card-desc {
+      font-size: 0.88rem;
+      color: var(--ak-text-2);
+      line-height: 1.6;
+      margin: 0;
+      flex: 1;
+    }
+    .kit-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .kit-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: var(--ak-bg-lavender);
+      color: var(--ak-purple);
+    }
+    .kit-tag-blue {
+      background: var(--ak-bg-blue);
+      color: var(--ak-blue);
+    }
+    .kit-tag-pink {
+      background: var(--ak-bg-pink);
+      color: var(--ak-pink);
+    }
+    .kit-card-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--ak-text-2);
+      border-top: 1px solid var(--ak-border);
+      padding-top: 0.9rem;
+      margin-top: auto;
+    }
+    .kit-card-meta span strong {
+      color: var(--ak-text);
+    }
+    .kit-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ak-pink);
+      text-decoration: none;
+      margin-top: 0.2rem;
+      transition: gap 0.2s;
+    }
+    .kit-card-cta:hover { gap: 0.65rem; }
+    .kit-card-cta svg { flex-shrink: 0; }
+
+    /* ─── Curriculum phases ─────────────────────────────────── */
+    .curriculum-phases {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .phase-item {
+      background: var(--ak-bg-card);
+      border: 1px solid var(--ak-border);
+      border-radius: 16px;
+      padding: 1.6rem 2rem;
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 1.25rem;
+      align-items: start;
+      box-shadow: var(--ak-shadow);
+      transition: box-shadow 0.22s;
+    }
+    .phase-item:hover { box-shadow: var(--ak-shadow-lg); }
+    .phase-num-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .pnb-pink     { background: var(--ak-bg-pink);     color: var(--ak-pink); }
+    .pnb-purple   { background: var(--ak-bg-lavender); color: var(--ak-purple); }
+    .pnb-blue     { background: var(--ak-bg-blue);     color: var(--ak-blue); }
+    .pnb-cyan     { background: #E3FEFF;               color: var(--ak-cyan); filter: brightness(0.8); }
+    .phase-body h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ak-text);
+      margin: 0 0 0.45rem;
+    }
+    .phase-body p {
+      font-size: 0.88rem;
+      color: var(--ak-text-2);
+      margin: 0 0 0.6rem;
+      line-height: 1.55;
+    }
+    .phase-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .phase-topic {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      background: var(--ak-bg-lavender);
+      color: var(--ak-purple);
+      font-weight: 500;
+    }
+    .phase-kit-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--ak-text-2);
+      white-space: nowrap;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid var(--ak-border);
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+
+    /* ─── Labs ──────────────────────────────────────────────── */
+    .labs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .lab-card {
+      background: var(--ak-bg-card);
+      border: 1px solid var(--ak-border);
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: var(--ak-shadow);
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+    .lab-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--ak-shadow-lg);
+    }
+    .lab-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.9rem;
+    }
+    .lab-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ak-text);
+      margin: 0 0 0.5rem;
+    }
+    .lab-card p {
+      font-size: 0.85rem;
+      color: var(--ak-text-2);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .lab-count {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ak-pink);
+    }
+
+    /* ─── Pricing ───────────────────────────────────────────── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .pricing-card {
+      background: var(--ak-bg-card);
+      border: 1px solid var(--ak-border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--ak-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .pricing-card:hover { transform: translateY(-6px); box-shadow: var(--ak-shadow-lg); }
+    .pricing-card--featured {
+      border-color: var(--ak-purple);
+      box-shadow: 0 0 0 2px rgba(153,0,255,0.18), var(--ak-shadow-lg);
+      background: linear-gradient(160deg, #fff 80%, var(--ak-bg-lavender));
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ak-grad);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .pricing-plan {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ak-text-2);
+    }
+    .pricing-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+    .pricing-price .currency { font-size: 1rem; color: var(--ak-text-2); }
+    .pricing-price .amount {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--ak-text);
+      line-height: 1;
+    }
+    .pricing-price .per { font-size: 0.82rem; color: var(--ak-text-2); }
+    .pricing-desc {
+      font-size: 0.88rem;
+      color: var(--ak-text-2);
+      line-height: 1.55;
+      border-bottom: 1px solid var(--ak-border);
+      padding-bottom: 1rem;
+    }
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.87rem;
+      color: var(--ak-text-2);
+    }
+    .pricing-features li .check {
+      flex-shrink: 0;
+      color: var(--ak-pink);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .pricing-cta-wrap { margin-top: auto; }
+
+    /* ─── CTA band ───────────────────────────────────────────── */
+    .kits-cta-band {
+      background: var(--ak-text);
+      border-radius: 24px;
+      padding: 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .kits-cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--ak-grad);
+      opacity: 0.12;
+    }
+    .kits-cta-band h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 900;
+      color: #fff;
+      margin: 0 0 1rem;
+      position: relative;
+    }
+    .kits-cta-band p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+    .kits-cta-band .cta-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+    }
+    .kits-cta-band .kits-btn-primary {
+      font-size: 1rem;
+      padding: 0.9rem 2.2rem;
+    }
+    .kits-cta-band .kits-btn-outline {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.45);
+      font-size: 1rem;
+      padding: 0.86rem 2.2rem;
+    }
+    .kits-cta-band .kits-btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    /* ─── Footer override ────────────────────────────────────── */
+    .kits-page .footer {
+      background: var(--ak-text);
+      color: rgba(255,255,255,0.85);
+    }
+    .kits-page .footer h4 { color: #fff; }
+    .kits-page .footer a { color: rgba(255,255,255,0.7); }
+    .kits-page .footer a:hover { color: var(--ak-pink); }
+    .kits-page .footer-bottom p { color: rgba(255,255,255,0.4); }
+    .kits-page .footer-brand p { color: rgba(255,255,255,0.6); }
+
+    /* ─── Sticky in-page nav ─────────────────────────────────── */
+    .kits-subnav {
+      position: sticky;
+      top: 82px;
+      z-index: 90;
+      background: rgba(249, 251, 255, 0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--ak-border);
+      padding: 0;
+    }
+    .kits-subnav-inner {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 0;
+    }
+    .kits-subnav-inner::-webkit-scrollbar { display: none; }
+    .kits-subnav-inner a {
+      display: block;
+      padding: 0.9rem 1.3rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ak-text-2);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .kits-subnav-inner a:hover,
+    .kits-subnav-inner a.active {
+      color: var(--ak-pink);
+      border-bottom-color: var(--ak-pink);
+    }
+
+    /* ─── Back to top ─────────────────────────────────────────── */
+    .kits-page .back-top {
+      background: var(--ak-bg-card);
+      border: 1px solid var(--ak-border);
+      box-shadow: var(--ak-shadow);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .kits-hero-grid     { grid-template-columns: 1fr; gap: 2rem; }
+      .kits-hero-panel    { display: none; }
+      .kits-overview-grid { grid-template-columns: 1fr; }
+      .pricing-grid       { grid-template-columns: 1fr; }
+      .phase-item         { grid-template-columns: 56px 1fr; }
+      .phase-kit-badge    { grid-column: 2; }
+    }
+    @media (max-width: 640px) {
+      .kits-hero   { padding: 4rem 0 3.5rem; }
+      .kits-section{ padding: 60px 0; }
+      .kits-cta-band { padding: 2.5rem 1.5rem; }
+      .kits-stats  { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body class="kits-page">
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo logo-img" aria-label="SelectAI home">
+        <img src="assets/images/logo-black.png" alt="SelectAI" height="42" width="auto" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#partners">Partners</a></li>
+        <li><a href="/#team">Team</a></li>
+        <li><a href="/#capabilities">Why Us</a></li>
+        <li><a href="tools.html">AI Tools</a></li>
+        <li><a href="ai-kits.html" class="nav-cta" aria-current="page">AI Engineering Kits</a></li>
+        <li class="nav-signin-item" id="navSignInItem">
+          <a href="signin.html" class="nav-signin-btn">Sign In</a>
+        </li>
+        <li class="nav-user-item" id="navUserItem">
+          <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()" aria-label="User menu" aria-haspopup="true" aria-expanded="false" aria-controls="navUserDropdown">
+            <span class="nav-user-avatar-wrap">
+              <img id="navUserAvatar" src="" alt="" class="nav-user-photo" style="display:none;" />
+              <svg id="navUserIcon" class="nav-user-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </span>
+            <svg class="nav-user-chevron" width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><path d="M0 3l5 5 5-5z"/></svg>
+          </button>
+          <div class="nav-user-dropdown" id="navUserDropdown">
+            <p class="nav-user-dropdown-hd" id="navUserDropdownName">Account</p>
+            <div id="navUserAuthed">
+              <a href="profile.html">Profile</a>
+              <a href="signin.html?forgot=1">Password Reset</a>
+              <hr class="nav-user-dropdown-divider" />
+              <a href="#" onclick="signOutUser(); return false;">Sign Out</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section id="top" class="kits-hero">
+    <div class="kits-hero-orbs" aria-hidden="true">
+      <div class="korb korb-1"></div>
+      <div class="korb korb-2"></div>
+      <div class="korb korb-3"></div>
+    </div>
+    <div class="container">
+      <div class="kits-hero-grid">
+        <!-- Left: headline + CTAs -->
+        <div class="animate-on-scroll">
+          <div class="kits-eyebrow">
+            <span>Applied AI Engineering</span>
+          </div>
+          <h1 class="kits-hero-title">
+            Build Real AI.<br />
+            <span class="kits-grad-text">Kit by Kit.</span>
+          </h1>
+          <p class="kits-hero-sub">
+            Modular, project-driven AI engineering programs designed for working professionals. Pick your specialization, work through hands-on labs, and graduate kit-credentialed into production AI.
+          </p>
+          <div class="kits-hero-btns">
+            <a
+              href="https://learn.selectai.it.com/kits"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="kits-btn-primary"
+            >
+              Enroll Now
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#curriculum" class="kits-btn-outline">View Curriculum</a>
+            <a href="#pricing" class="kits-btn-outline">See Pricing</a>
+          </div>
+          <div class="kits-stats">
+            <div class="kits-stat-item">
+              <span class="kits-stat-value">5 Kits</span>
+              <span class="kits-stat-label">Specialization tracks</span>
+            </div>
+            <div class="kits-stat-item">
+              <span class="kits-stat-value">40+ Labs</span>
+              <span class="kits-stat-label">Build-first exercises</span>
+            </div>
+            <div class="kits-stat-item">
+              <span class="kits-stat-value">20 Weeks</span>
+              <span class="kits-stat-label">Flexible guided path</span>
+            </div>
+            <div class="kits-stat-item">
+              <span class="kits-stat-value">4 Capstones</span>
+              <span class="kits-stat-label">Portfolio projects</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: panel card -->
+        <aside class="kits-hero-panel animate-on-scroll animate-delay-2" aria-label="Program overview">
+          <div class="kits-panel-head">
+            <span class="kits-panel-tag">What You'll Build</span>
+            <span class="kits-panel-badge">5 Specializations</span>
+          </div>
+          <h2 class="kits-panel-title">From traced prompts to production-grade agent systems</h2>
+          <p class="kits-panel-desc">
+            Each kit takes you from local-first setup through real database integration, retrieval pipelines, agentic workflows, security, and deployment discipline.
+          </p>
+          <ul class="kits-panel-list" role="list">
+            <li>
+              <span class="dot dot-pink" aria-hidden="true"></span>
+              <span><strong>Kit 1</strong> — Foundation: Python, LangChain, LangSmith, prompt engineering</span>
+            </li>
+            <li>
+              <span class="dot dot-purple" aria-hidden="true"></span>
+              <span><strong>Kit 2</strong> — Data & RAG: SQL/NoSQL, vector stores, FAISS, RAG pipelines</span>
+            </li>
+            <li>
+              <span class="dot dot-blue" aria-hidden="true"></span>
+              <span><strong>Kit 3</strong> — Agents: LangGraph, MCP, multi-agent coordination</span>
+            </li>
+            <li>
+              <span class="dot dot-cyan" aria-hidden="true"></span>
+              <span><strong>Kit 4</strong> — Security: guardrails, red-teaming, AI governance</span>
+            </li>
+            <li>
+              <span class="dot dot-mag" aria-hidden="true"></span>
+              <span><strong>Kit 5</strong> — Production: fine-tuning, local models, CI/CD deployment</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STICKY IN-PAGE NAV ─── -->
+  <nav class="kits-subnav" aria-label="Page sections">
+    <div class="container">
+      <div class="kits-subnav-inner">
+        <a href="#program">Program</a>
+        <a href="#kits">Kits</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#labs">Labs</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── PROGRAM OVERVIEW ─── -->
+  <section id="program" class="kits-section">
+    <div class="container">
+      <div class="kits-section-hd animate-on-scroll">
+        <span class="kits-section-tag">Why AI Engineering Kits</span>
+        <h2>Learn by Building, <span class="kits-grad-text">Not Watching</span></h2>
+        <p>Every kit is designed around a real deliverable — not a slide deck. You finish with running code, a portfolio project, and the confidence to ship AI in production.</p>
+      </div>
+      <div class="kits-overview-grid">
+        <div class="kits-overview-card animate-on-scroll animate-delay-1">
+          <div class="kits-overview-icon icon-bg-pink" aria-hidden="true">🧱</div>
+          <h3>Modular by Design</h3>
+          <p>Pick the kits that match your current role or career goal. Do one kit or complete the full specialization path — the program flexes around you.</p>
+        </div>
+        <div class="kits-overview-card animate-on-scroll animate-delay-2">
+          <div class="kits-overview-icon icon-bg-lavender" aria-hidden="true">⚙️</div>
+          <h3>Project-First Learning</h3>
+          <p>Labs come before lectures. Each phase starts with a hands-on exercise that reveals why the theory matters, not the other way around.</p>
+        </div>
+        <div class="kits-overview-card animate-on-scroll animate-delay-3">
+          <div class="kits-overview-icon icon-bg-blue" aria-hidden="true">🏆</div>
+          <h3>Kit Credentials</h3>
+          <p>Complete a kit, submit your capstone, earn a verifiable kit credential. Collect all five to earn the Applied AI Engineering certification.</p>
+        </div>
+        <div class="kits-overview-card animate-on-scroll animate-delay-1">
+          <div class="kits-overview-icon icon-bg-pink" aria-hidden="true">🗂️</div>
+          <h3>Real Databases, Real APIs</h3>
+          <p>Work with PostgreSQL, MongoDB, Redis, and Pinecone — not toy datasets. Connect to live APIs and build pipelines that handle real data at scale.</p>
+        </div>
+        <div class="kits-overview-card animate-on-scroll animate-delay-2">
+          <div class="kits-overview-icon icon-bg-lavender" aria-hidden="true">🤝</div>
+          <h3>Async Mentor Access</h3>
+          <p>Get code reviews and architecture feedback from SelectAI engineers. Ask questions, share your work, and unblock yourself faster.</p>
+        </div>
+        <div class="kits-overview-card animate-on-scroll animate-delay-3">
+          <div class="kits-overview-icon icon-bg-blue" aria-hidden="true">🚀</div>
+          <h3>Deploy to Production</h3>
+          <p>Every capstone includes a deployment milestone — containerized, cloud-hosted, observable. You'll know your code runs because it does run.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── KIT CATALOG ─── -->
+  <section id="kits" class="kits-section kits-section-alt">
+    <div class="container">
+      <div class="kits-section-hd animate-on-scroll">
+        <span class="kits-section-tag">Kit Catalog</span>
+        <h2>5 Specialization <span class="kits-grad-text">Kits</span></h2>
+        <p>Each kit is a self-contained learning module with labs, a mentor review, and a capstone project. Browse them on the learning platform.</p>
+      </div>
+      <div class="kits-grid">
+
+        <!-- Kit 1 -->
+        <article class="kit-card kit-card--pink animate-on-scroll animate-delay-1">
+          <span class="kit-card-num">Kit 01</span>
+          <h3 class="kit-card-title">AI/ML Engineering Foundation</h3>
+          <p class="kit-card-desc">Set up your professional AI engineering environment, master LangChain LCEL, prompt engineering patterns, and end-to-end tracing with LangSmith.</p>
+          <div class="kit-card-tags">
+            <span class="kit-tag kit-tag-pink">Python</span>
+            <span class="kit-tag">LangChain</span>
+            <span class="kit-tag">LangSmith</span>
+            <span class="kit-tag kit-tag-pink">Groq</span>
+            <span class="kit-tag">Prompt Eng.</span>
+          </div>
+          <div class="kit-card-meta">
+            <span><strong>4 weeks</strong> guided</span>
+            <span><strong>8 labs</strong></span>
+            <span><strong>1 capstone</strong></span>
+          </div>
+          <a href="https://learn.selectai.it.com/kits/foundation" target="_blank" rel="noopener noreferrer" class="kit-card-cta">
+            Explore Kit 01
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Kit 2 -->
+        <article class="kit-card kit-card--purple animate-on-scroll animate-delay-2">
+          <span class="kit-card-num">Kit 02</span>
+          <h3 class="kit-card-title">Data Engineering & RAG Pipelines</h3>
+          <p class="kit-card-desc">Connect AI to real databases — PostgreSQL, MongoDB, Redis. Build retrieval-augmented generation pipelines with FAISS and Chroma vector stores.</p>
+          <div class="kit-card-tags">
+            <span class="kit-tag">PostgreSQL</span>
+            <span class="kit-tag">MongoDB</span>
+            <span class="kit-tag kit-tag-blue">Vector DBs</span>
+            <span class="kit-tag">FAISS</span>
+            <span class="kit-tag">RAG</span>
+          </div>
+          <div class="kit-card-meta">
+            <span><strong>4 weeks</strong> guided</span>
+            <span><strong>9 labs</strong></span>
+            <span><strong>1 capstone</strong></span>
+          </div>
+          <a href="https://learn.selectai.it.com/kits/data-rag" target="_blank" rel="noopener noreferrer" class="kit-card-cta">
+            Explore Kit 02
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Kit 3 -->
+        <article class="kit-card kit-card--blue animate-on-scroll animate-delay-3">
+          <span class="kit-card-num">Kit 03</span>
+          <h3 class="kit-card-title">Agentic AI & Multi-Agent Systems</h3>
+          <p class="kit-card-desc">Build stateful, branching, and parallel agent workflows with LangGraph. Implement MCP servers and coordinate multi-agent pipelines that solve real problems.</p>
+          <div class="kit-card-tags">
+            <span class="kit-tag kit-tag-blue">LangGraph</span>
+            <span class="kit-tag kit-tag-blue">MCP</span>
+            <span class="kit-tag">Multi-Agent</span>
+            <span class="kit-tag">Tool Use</span>
+            <span class="kit-tag">State Mgmt</span>
+          </div>
+          <div class="kit-card-meta">
+            <span><strong>4 weeks</strong> guided</span>
+            <span><strong>10 labs</strong></span>
+            <span><strong>1 capstone</strong></span>
+          </div>
+          <a href="https://learn.selectai.it.com/kits/agents" target="_blank" rel="noopener noreferrer" class="kit-card-cta">
+            Explore Kit 03
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Kit 4 -->
+        <article class="kit-card kit-card--cyan animate-on-scroll animate-delay-1">
+          <span class="kit-card-num">Kit 04</span>
+          <h3 class="kit-card-title">AI Security & Governance</h3>
+          <p class="kit-card-desc">Red-team your own AI systems. Implement input/output guardrails, bias audits, content moderation pipelines, and enterprise AI governance frameworks.</p>
+          <div class="kit-card-tags">
+            <span class="kit-tag">Guardrails</span>
+            <span class="kit-tag kit-tag-pink">Red-Teaming</span>
+            <span class="kit-tag">Governance</span>
+            <span class="kit-tag">Bias Audit</span>
+            <span class="kit-tag">NeMo</span>
+          </div>
+          <div class="kit-card-meta">
+            <span><strong>4 weeks</strong> guided</span>
+            <span><strong>8 labs</strong></span>
+            <span><strong>1 capstone</strong></span>
+          </div>
+          <a href="https://learn.selectai.it.com/kits/security" target="_blank" rel="noopener noreferrer" class="kit-card-cta">
+            Explore Kit 04
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Kit 5 -->
+        <article class="kit-card kit-card--mixed animate-on-scroll animate-delay-2">
+          <span class="kit-card-num">Kit 05</span>
+          <h3 class="kit-card-title">Production AI: Fine-Tuning & Deployment</h3>
+          <p class="kit-card-desc">Fine-tune open-source LLMs with LoRA/QLoRA, run models locally with Ollama, containerize with Docker, and deploy observable AI services to the cloud.</p>
+          <div class="kit-card-tags">
+            <span class="kit-tag kit-tag-pink">Fine-Tuning</span>
+            <span class="kit-tag">Ollama</span>
+            <span class="kit-tag kit-tag-blue">Docker</span>
+            <span class="kit-tag kit-tag-blue">CI/CD</span>
+            <span class="kit-tag">LoRA</span>
+          </div>
+          <div class="kit-card-meta">
+            <span><strong>4 weeks</strong> guided</span>
+            <span><strong>9 labs</strong></span>
+            <span><strong>1 capstone</strong></span>
+          </div>
+          <a href="https://learn.selectai.it.com/kits/production" target="_blank" rel="noopener noreferrer" class="kit-card-cta">
+            Explore Kit 05
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CURRICULUM ─── -->
+  <section id="curriculum" class="kits-section kits-section-lavender">
+    <div class="container">
+      <div class="kits-section-hd animate-on-scroll">
+        <span class="kits-section-tag">Curriculum</span>
+        <h2>What You'll Learn <span class="kits-grad-text">Phase by Phase</span></h2>
+        <p>The full 20-week path across 9 phases, organized across all 5 kits. Each phase has a concrete build objective — you always know what you're working toward.</p>
+      </div>
+      <div class="curriculum-phases">
+
+        <div class="phase-item animate-on-scroll animate-delay-1">
+          <div class="phase-num-badge pnb-pink">01</div>
+          <div class="phase-body">
+            <h3>Environment & Foundations</h3>
+            <p>Professional Python setup, virtual environments, VS Code for AI development, Git discipline, Groq API, and first prompt traces in LangSmith.</p>
+            <div class="phase-topics">
+              <span class="phase-topic">Python 3.11+</span>
+              <span class="phase-topic">VS Code</span>
+              <span class="phase-topic">Groq API</span>
+              <span class="phase-topic">LangSmith</span>
+              <span class="phase-topic">Git</span>
+            </div>
+          </div>
+          <span class="phase-kit-badge">Kit 01</span>
+        </div>
+
+        <div class="phase-item animate-on-scroll animate-delay-2">
+          <div class="phase-num-badge pnb-pink">02</div>
+          <div class="phase-body">
+            <h3>Prompt Engineering & LCEL</h3>
+            <p>Advanced prompt patterns, chain-of-thought, few-shot learning. Build composable chains with LangChain Expression Language (LCEL).</p>
+            <div class="phase-topics">
+              <span class="phase-topic">CoT Prompting</span>
+              <span class="phase-topic">Few-Shot</span>
+              <span class="phase-topic">LCEL</span>
+              <span class="phase-topic">Memory</span>
+              <span class="phase-topic">Output Parsers</span>
+            </div>
+          </div>
+          <span class="phase-kit-badge">Kit 01</span>
+        </div>
+
+        <div class="phase-item animate-on-scroll animate-delay-1">
+          <div class="phase-num-badge pnb-purple">03</div>
+          <div class="phase-body">
+            <h3>Databases for AI</h3>
+            <p>Design schemas optimized for AI workloads. Connect LangChain to PostgreSQL, MongoDB, and Redis. Handle structured and unstructured data in the same pipeline.</p>
+            <div class="phase-topics">
+              <span class="phase-topic">PostgreSQL</span>
+              <span class="phase-topic">MongoDB</span>
+              <span class="phase-topic">Redis</span>
+              <span class="phase-topic">SQLAlchemy</span>
+              <span class="phase-topic">pgvector</span>
+            </div>
+          </div>
+          <span class="phase-kit-badge">Kit 02</span>
+        </div>
+
+        <div class="phase-item animate-on-scroll animate-delay-2">
+          <div class="phase-num-badge pnb-purple">04</div>
+          <div class="phase-body">
+            <h3>Retrieval-Augmented Generation</h3>
+            <p>Build end-to-end RAG pipelines with FAISS, Chroma, and Pinecone. Implement hybrid search, reranking, and evaluation frameworks.</p>
+            <div class="phase-topics">
+              <span class="phase-topic">FAISS</span>
+              <span class="phase-topic">Chroma</span>
+              <span class="phase-topic">Pinecone</span>
+              <span class="phase-topic">Hybrid Search</span>
+              <span class="phase-topic">RAGAs</span>
+            </div>
+          </div>
+          <span class="phase-kit-badge">Kit 02</span>
+        </div>
+
+        <div class="phase-item animate-on-scroll animate-delay-1">
+          <div class="phase-num-badge pnb-blue">05</div>
+          <div class="phase-body">
+            <h3>Agentic Systems & Tool Use</h3>
+            <p>Build ReAct agents with custom tools, structured output, and error recovery. Implement human-in-the-loop checkpoints for high-stakes decisions.</p>
+            <div class="phase-topics">
+              <span class="phase-topic">ReAct Agents</span>
+              <span class="phase-topic">Tool Calling</span>
+              <span class="phase-topic">Human-in-Loop</span>
+              <span class="phase-topic">Structured Output</span>
+            </div>
+          </div>
+          <span class="phase-kit-badge">Kit 03</span>
+        </div>
+
+        <div class="phase-item animate-on-scroll animate-delay-2">
+          <div class="phase-num-badge pnb-blue">06</div>
+          <div class="phase-body">
+            <h3>LangGraph & MCP</h3>
+            <p>Design stateful, branching multi-agent graphs with LangGraph. Build and expose custom Model Context Protocol (MCP) servers. Coordinate parallel agent sub-graphs.</p>
+            <div class="phase-topics">
+              <span class="phase-topic">LangGraph</span>
+              <span class="phase-topic">MCP Servers</span>
+              <span class="phase-topic">State Machines</span>
+              <span class="phase-topic">Parallel Agents</span>
+            </div>
+          </div>
+          <span class="phase-kit-badge">Kit 03</span>
+        </div>
+
+        <div class="phase-item animate-on-scroll animate-delay-1">
+          <div class="phase-num-badge pnb-cyan">07</div>
+          <div class="phase-body">
+            <h3>AI Security & Guardrails</h3>
+            <p>Implement prompt injection defenses, jailbreak testing, input/output filters, PII detection, and content moderation pipelines.</p>
+            <div class="phase-topics">
+              <span class="phase-topic">Guardrails AI</span>
+              <span class="phase-topic">NeMo</span>
+              <span class="phase-topic">Red-Teaming</span>
+              <span class="phase-topic">PII Detection</span>
+              <span class="phase-topic">OWASP LLM</span>
+            </div>
+          </div>
+          <span class="phase-kit-badge">Kit 04</span>
+        </div>
+
+        <div class="phase-item animate-on-scroll animate-delay-2">
+          <div class="phase-num-badge pnb-cyan">08</div>
+          <div class="phase-body">
+            <h3>Fine-Tuning & Local Models</h3>
+            <p>Fine-tune Llama 3 and Mistral with LoRA and QLoRA. Run models locally with Ollama. Compare fine-tuned vs base models with structured evals.</p>
+            <div class="phase-topics">
+              <span class="phase-topic">LoRA / QLoRA</span>
+              <span class="phase-topic">Ollama</span>
+              <span class="phase-topic">Llama 3</span>
+              <span class="phase-topic">Mistral</span>
+              <span class="phase-topic">Unsloth</span>
+            </div>
+          </div>
+          <span class="phase-kit-badge">Kit 05</span>
+        </div>
+
+        <div class="phase-item animate-on-scroll animate-delay-1">
+          <div class="phase-num-badge" style="background:var(--ak-bg-pink);color:var(--ak-pink);">09</div>
+          <div class="phase-body">
+            <h3>Production Deployment & CI/CD</h3>
+            <p>Containerize AI services with Docker, build CI/CD pipelines with GitHub Actions, add observability with LangSmith and Prometheus, and deploy to AWS or GCP.</p>
+            <div class="phase-topics">
+              <span class="phase-topic">Docker</span>
+              <span class="phase-topic">GitHub Actions</span>
+              <span class="phase-topic">Prometheus</span>
+              <span class="phase-topic">AWS / GCP</span>
+              <span class="phase-topic">LangSmith Prod</span>
+            </div>
+          </div>
+          <span class="phase-kit-badge">Kit 05</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LABS ─── -->
+  <section id="labs" class="kits-section kits-section-alt">
+    <div class="container">
+      <div class="kits-section-hd animate-on-scroll">
+        <span class="kits-section-tag">Hands-On Labs</span>
+        <h2>40+ Build-First <span class="kits-grad-text">Exercises</span></h2>
+        <p>Every lab starts with a working failure — you fix it, extend it, and ship it. No copy-paste exercises.</p>
+      </div>
+      <div class="labs-grid">
+        <div class="lab-card animate-on-scroll animate-delay-1">
+          <div class="lab-card-icon" aria-hidden="true">🔍</div>
+          <h3>RAG Pipeline Challenge</h3>
+          <p>Build a production RAG system with hybrid retrieval, metadata filtering, and cross-encoder reranking. Evaluate with RAGAs.</p>
+          <span class="lab-count">8 labs in Kit 02</span>
+        </div>
+        <div class="lab-card animate-on-scroll animate-delay-2">
+          <div class="lab-card-icon" aria-hidden="true">🤖</div>
+          <h3>LangGraph Agent Design</h3>
+          <p>Design a customer support agent with branching logic, tool fallbacks, and a human escalation checkpoint using LangGraph state machines.</p>
+          <span class="lab-count">10 labs in Kit 03</span>
+        </div>
+        <div class="lab-card animate-on-scroll animate-delay-3">
+          <div class="lab-card-icon" aria-hidden="true">🛡️</div>
+          <h3>Red-Team Your Own Model</h3>
+          <p>Run structured attacks against your own LLM app, document vulnerabilities, and implement defenses using Guardrails AI and NeMo Guardrails.</p>
+          <span class="lab-count">8 labs in Kit 04</span>
+        </div>
+        <div class="lab-card animate-on-scroll animate-delay-1">
+          <div class="lab-card-icon" aria-hidden="true">⚡</div>
+          <h3>Local Model Benchmark</h3>
+          <p>Fine-tune Llama 3.1 on a domain-specific dataset with QLoRA, run the model locally via Ollama, and benchmark latency vs hosted APIs.</p>
+          <span class="lab-count">9 labs in Kit 05</span>
+        </div>
+        <div class="lab-card animate-on-scroll animate-delay-2">
+          <div class="lab-card-icon" aria-hidden="true">🗄️</div>
+          <h3>Multi-Database Pipeline</h3>
+          <p>Wire PostgreSQL, MongoDB, and a vector store into a single LangChain retrieval chain with caching via Redis and full observability.</p>
+          <span class="lab-count">9 labs in Kit 02</span>
+        </div>
+        <div class="lab-card animate-on-scroll animate-delay-3">
+          <div class="lab-card-icon" aria-hidden="true">📦</div>
+          <h3>Production Deployment</h3>
+          <p>Containerize your final capstone project, set up a GitHub Actions CI/CD pipeline, and deploy to AWS ECS with health checks and alerting.</p>
+          <span class="lab-count">9 labs in Kit 05</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRICING ─── -->
+  <section id="pricing" class="kits-section kits-section-lavender">
+    <div class="container">
+      <div class="kits-section-hd animate-on-scroll">
+        <span class="kits-section-tag">Pricing</span>
+        <h2>Invest Once, <span class="kits-grad-text">Build Forever</span></h2>
+        <p>Access a single kit or the full specialization path. All plans include the learning platform, labs, and kit credential on completion.</p>
+      </div>
+
+      <!-- ── Region + Currency selector ── -->
+      <div class="pricing-region-bar animate-on-scroll">
+        <div class="pricing-region-group">
+          <label class="pricing-sel-label" for="regionSelect">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            Region
+          </label>
+          <select id="regionSelect" class="pricing-select" aria-label="Select region">
+            <option value="asia-pacific">🌏 Asia Pacific</option>
+            <option value="north-america">🌎 North America</option>
+            <option value="europe">🌍 Europe</option>
+            <option value="middle-east">🌍 Middle East</option>
+            <option value="other">🌐 Other Regions</option>
+          </select>
+        </div>
+        <div class="pricing-region-group">
+          <label class="pricing-sel-label" for="currencySelect">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Country / Currency
+          </label>
+          <select id="currencySelect" class="pricing-select" aria-label="Select currency">
+            <option value="INR" data-symbol="₹" data-rate="1"       data-region="asia-pacific">🇮🇳 India — INR ₹</option>
+            <option value="USD" data-symbol="$" data-rate="0.012"   data-region="north-america">🇺🇸 United States — USD $</option>
+            <option value="GBP" data-symbol="£" data-rate="0.0094"  data-region="europe">🇬🇧 United Kingdom — GBP £</option>
+            <option value="EUR" data-symbol="€" data-rate="0.011"   data-region="europe">🇪🇺 European Countries — EUR €</option>
+            <option value="AED" data-symbol="د.إ" data-rate="0.044" data-region="middle-east">🇦🇪 UAE — AED د.إ</option>
+            <option value="AUD" data-symbol="A$" data-rate="0.018"  data-region="asia-pacific">🇦🇺 Australia — AUD A$</option>
+            <option value="CAD" data-symbol="C$" data-rate="0.016"  data-region="north-america">🇨🇦 Canada — CAD C$</option>
+            <option value="SGD" data-symbol="S$" data-rate="0.016"  data-region="asia-pacific">🇸🇬 Singapore — SGD S$</option>
+          </select>
+        </div>
+        <p class="pricing-region-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Prices shown in your selected currency.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="pricing-card animate-on-scroll animate-delay-1">
+          <p class="pricing-plan">Single Kit</p>
+          <div class="pricing-price">
+            <span class="currency price-sym">₹</span>
+            <span class="amount price-val" data-base-inr="4999">4,999</span>
+            <span class="per">/ kit</span>
+          </div>
+          <p class="pricing-desc">Perfect if you have a specific gap to fill. One kit, all labs, kit credential on completion.</p>
+          <ul class="pricing-features">
+            <li><span class="check" aria-hidden="true">✦</span>Access to one specialization kit</li>
+            <li><span class="check" aria-hidden="true">✦</span>All labs &amp; exercises</li>
+            <li><span class="check" aria-hidden="true">✦</span>Kit completion credential</li>
+            <li><span class="check" aria-hidden="true">✦</span>6-month platform access</li>
+            <li><span class="check" aria-hidden="true">✦</span>Community forum access</li>
+          </ul>
+          <div class="pricing-cta-wrap">
+            <a href="signin.html?intent=enroll-single" class="kits-btn-outline" style="width:100%;justify-content:center;box-sizing:border-box;">
+              Enroll in a Kit
+            </a>
+          </div>
+        </div>
+
+        <div class="pricing-card pricing-card--featured animate-on-scroll animate-delay-2">
+          <span class="pricing-badge">Most Popular</span>
+          <p class="pricing-plan">Full Specialization</p>
+          <div class="pricing-price">
+            <span class="currency price-sym">₹</span>
+            <span class="amount price-val" data-base-inr="18999">18,999</span>
+            <span class="per">/ all 5 kits</span>
+          </div>
+          <p class="pricing-desc">The complete Applied AI Engineering path — all 5 kits, 4 capstones, and the full specialization credential.</p>
+          <ul class="pricing-features">
+            <li><span class="check" aria-hidden="true">✦</span>All 5 specialization kits</li>
+            <li><span class="check" aria-hidden="true">✦</span>40+ labs &amp; 4 capstones</li>
+            <li><span class="check" aria-hidden="true">✦</span>Applied AI Engineering credential</li>
+            <li><span class="check" aria-hidden="true">✦</span>12-month platform access</li>
+            <li><span class="check" aria-hidden="true">✦</span>Async mentor code reviews</li>
+            <li><span class="check" aria-hidden="true">✦</span>Priority community access</li>
+          </ul>
+          <div class="pricing-cta-wrap">
+            <a href="signin.html?intent=enroll-full" class="kits-btn-primary" style="width:100%;justify-content:center;box-sizing:border-box;">
+              Enroll Now
+            </a>
+          </div>
+        </div>
+
+        <div class="pricing-card animate-on-scroll animate-delay-3">
+          <p class="pricing-plan">Enterprise / Teams</p>
+          <div class="pricing-price">
+            <span class="amount" style="font-size:1.8rem;-webkit-text-fill-color:var(--ak-text);">Custom</span>
+          </div>
+          <p class="pricing-desc">Bring Applied AI Engineering to your team. Custom cohort scheduling, dedicated mentor, and branded learning experience.</p>
+          <ul class="pricing-features">
+            <li><span class="check" aria-hidden="true">✦</span>5–50 seats per cohort</li>
+            <li><span class="check" aria-hidden="true">✦</span>Dedicated mentor track</li>
+            <li><span class="check" aria-hidden="true">✦</span>Custom curriculum scoping</li>
+            <li><span class="check" aria-hidden="true">✦</span>Team progress analytics</li>
+            <li><span class="check" aria-hidden="true">✦</span>LMS integration support</li>
+          </ul>
+          <div class="pricing-cta-wrap">
+            <a href="index.html#connect" class="kits-btn-outline" style="width:100%;justify-content:center;box-sizing:border-box;">
+              Contact Us
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ── Region / Currency bar ─────────────────────────── */
+    .pricing-region-bar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: var(--ak-bg-card);
+      border: 1px solid var(--ak-border);
+      border-radius: 16px;
+      padding: 1rem 1.4rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--ak-shadow);
+    }
+    .pricing-region-group {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .pricing-sel-label {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ak-text-2);
+      white-space: nowrap;
+    }
+    .pricing-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--ak-bg-lavender) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239900FF'/%3E%3C/svg%3E") no-repeat right 10px center;
+      background-size: 10px;
+      border: 1px solid rgba(153,0,255,0.2);
+      border-radius: 10px;
+      padding: 0.45rem 2rem 0.45rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ak-purple);
+      cursor: pointer;
+      min-width: 200px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pricing-select:focus {
+      outline: none;
+      border-color: var(--ak-purple);
+      box-shadow: 0 0 0 3px rgba(153,0,255,0.12);
+    }
+    .pricing-region-note {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem !important;
+      color: var(--ak-text-2) !important;
+      opacity: 1 !important;
+      margin-left: auto;
+      background: var(--ak-bg-blue);
+      border-radius: 8px;
+      padding: 0.35rem 0.75rem;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .pricing-region-bar { flex-direction: column; align-items: flex-start; }
+      .pricing-region-note { margin-left: 0; }
+      .pricing-select { min-width: 100%; }
+    }
+  </style>
+
+  <script>
+  /* ── Currency / Region switcher ─────────────────────── */
+  (function () {
+    'use strict';
+    var regionSel   = document.getElementById('regionSelect');
+    var currencySel = document.getElementById('currencySelect');
+    if (!regionSel || !currencySel) return;
+
+    /* filter currency options by region */
+    function filterCurrencies(region) {
+      Array.from(currencySel.options).forEach(function (opt) {
+        var show = !region || opt.dataset.region === region || region === 'other';
+        opt.hidden = !show;
+      });
+      /* if selected option is now hidden, pick first visible */
+      if (currencySel.selectedOptions[0] && currencySel.selectedOptions[0].hidden) {
+        var first = Array.from(currencySel.options).find(function (o) { return !o.hidden; });
+        if (first) currencySel.value = first.value;
+      }
+      updatePrices();
+    }
+
+    function updatePrices() {
+      var opt    = currencySel.selectedOptions[0];
+      if (!opt) return;
+      var symbol = opt.dataset.symbol || '₹';
+      var rate   = parseFloat(opt.dataset.rate) || 1;
+      var isINR  = opt.value === 'INR';
+
+      document.querySelectorAll('.price-sym').forEach(function (el) {
+        el.textContent = symbol;
+      });
+      document.querySelectorAll('.price-val').forEach(function (el) {
+        var base  = parseInt(el.dataset.baseInr, 10);
+        var conv  = base * rate;
+        if (isINR) {
+          el.textContent = base.toLocaleString('en-IN');
+        } else {
+          /* round to 2 dp for smaller currencies, 0 dp for large */
+          el.textContent = conv < 100
+            ? conv.toFixed(2)
+            : Math.round(conv).toLocaleString();
+        }
+      });
+    }
+
+    regionSel.addEventListener('change', function () {
+      filterCurrencies(regionSel.value);
+    });
+    currencySel.addEventListener('change', updatePrices);
+
+    /* initialise */
+    filterCurrencies(regionSel.value);
+  }());
+  </script>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo logo-img" aria-label="SelectAI home">
+            <img src="assets/images/logo-black.png" alt="SelectAI" height="44" width="auto" />
+          </a>
+          <p>Future Ready AI Solutions for Tomorrow's Challenges. Established by 2 Strong Women.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>AI Engineering Kits</h4>
+          <ul>
+            <li><a href="#program">Program Overview</a></li>
+            <li><a href="#kits">Kit Catalog</a></li>
+            <li><a href="#curriculum">Curriculum</a></li>
+            <li><a href="#labs">Labs</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="https://learn.selectai.it.com/kits" target="_blank" rel="noopener noreferrer">Learning Platform ↗</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>SelectAI</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#capabilities">Why Us</a></li>
+            <li><a href="practical-ai-ml-engineering.html">Practical AI/ML Engineering</a></li>
+            <li><a href="tools.html">AI Tools</a></li>
+            <li><a href="/#connect">Contact</a></li>
+            <li><a href="https://www.linkedin.com/in/selectai-innovations-8633363bb" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 SelectAI. All rights reserved. Established by 2 Strong Women.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── BACK TO TOP ─── -->
+  <a href="#top" class="back-top" id="backTop" title="Back to top" aria-label="Back to top">
+    <img src="assets/images/logo-mark.png" alt="Back to top" width="28" height="28" />
+  </a>
+
+  <script src="js/main.js?v=20260912"></script>
+  <script src="js/nav-user.js?v=20260912"></script>
+  <script>
+    // ─── Sticky subnav active state ───────────────────────────
+    (function () {
+      var sections = ['program','kits','curriculum','labs','pricing'];
+      var links = document.querySelectorAll('.kits-subnav-inner a');
+
+      function onScroll() {
+        var scrollY = window.scrollY + 160;
+        var active = '';
+        sections.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el && el.offsetTop <= scrollY) active = id;
+        });
+        links.forEach(function (a) {
+          var href = a.getAttribute('href').replace('#', '');
+          a.classList.toggle('active', href === active);
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }());
+  </script>
+</body>
+</html>

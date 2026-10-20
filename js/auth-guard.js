@@ -35,7 +35,9 @@
     login: true,
     signin: true,
     practicalaiml: true,
-    practicalAiMl: true
+    practicalAiMl: true,
+    aiKits: true,
+    'ai-kits': true
   };
 
   function _isAuthPage() {

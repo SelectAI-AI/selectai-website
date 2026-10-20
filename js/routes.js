@@ -11,6 +11,7 @@
     profile:           '/profile',
     admin:             '/admin',
     practicalAiMl:     '/practical-ai-ml-engineering',
+    aiKits:            '/ai-kits',
     tests:             '/tests'
   };
 
@@ -26,6 +27,7 @@
     profile: 'profile',
     admin: 'admin',
     'practical-ai-ml-engineering': 'practicalAiMl',
+    'ai-kits': 'aiKits',
     tests: 'tests'
   };
 

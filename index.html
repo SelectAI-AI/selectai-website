@@ -23,6 +23,323 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       SelectAI Main Site — Light Brand Theme Override
+       Matches ai-kits.html palette exactly
+    ═══════════════════════════════════════════════════════ */
+    :root {
+      --ak-pink:        #FF1493;
+      --ak-magenta:     #EC00E8;
+      --ak-purple:      #9900FF;
+      --ak-blue:        #1677FF;
+      --ak-cyan:        #00CFFF;
+      --ak-bg:          #F9FBFF;
+      --ak-bg-alt:      #F2F5FF;
+      --ak-bg-pink:     #FFE5F7;
+      --ak-bg-lavender: #F2E6FF;
+      --ak-bg-blue:     #E3F8FF;
+      --ak-bg-card:     #FFFFFF;
+      --ak-text:        #080B45;
+      --ak-text-2:      #42547B;
+      --ak-border:      #DCE5F5;
+      --ak-grad:        linear-gradient(100deg,#FF1493,#EC00E8,#9900FF);
+      --ak-grad-hero:   linear-gradient(115deg,#FFE5F7 0%,#F9FBFF 48%,#E3F8FF 100%);
+      --ak-grad-text:   linear-gradient(90deg,#FF1493,#9900FF,#1677FF);
+      --ak-shadow:      0 8px 28px rgba(35,31,100,0.07);
+      --ak-shadow-lg:   0 16px 48px rgba(35,31,100,0.13);
+    }
+
+    /* ── Base ─────────────────────────────────────────────── */
+    body {
+      background: var(--ak-grad-hero) !important;
+      color: var(--ak-text) !important;
+    }
+    p { color: var(--ak-text-2) !important; opacity: 1 !important; }
+    h1,h2,h3,h4 { color: var(--ak-text) !important; }
+    a { color: inherit; }
+
+    /* ── Scroll progress ──────────────────────────────────── */
+    .scroll-progress {
+      background: var(--ak-grad) !important;
+      box-shadow: none !important;
+    }
+
+    /* ── Navbar ───────────────────────────────────────────── */
+    .navbar {
+      background: rgba(249,251,255,0.92) !important;
+      border-bottom: 1px solid var(--ak-border) !important;
+      box-shadow: none !important;
+    }
+    .navbar.scrolled {
+      background: rgba(249,251,255,0.97) !important;
+      backdrop-filter: blur(18px) !important;
+      box-shadow: 0 2px 20px rgba(35,31,100,0.07) !important;
+    }
+    .nav-links a { color: var(--ak-text) !important; }
+    .nav-links a:hover { color: var(--ak-pink) !important; }
+    .nav-cta {
+      background: var(--ak-grad) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      font-weight: 700 !important;
+    }
+    .nav-signin-btn {
+      color: var(--ak-blue) !important;
+      border-color: var(--ak-blue) !important;
+    }
+    .hamburger span { background: var(--ak-text) !important; }
+    .nav-user-btn { color: var(--ak-text) !important; border-color: var(--ak-border) !important; }
+    .nav-user-dropdown {
+      background: var(--ak-bg-card) !important;
+      border-color: var(--ak-border) !important;
+      color: var(--ak-text) !important;
+    }
+    .nav-user-dropdown a { color: var(--ak-text-2) !important; }
+    .nav-user-dropdown a:hover { color: var(--ak-pink) !important; }
+    .nav-user-dropdown-hd { color: var(--ak-text) !important; }
+    .nav-user-dropdown-divider { border-color: var(--ak-border) !important; }
+
+    /* ── Gradient text ────────────────────────────────────── */
+    .gradient-text {
+      background: var(--ak-grad-text) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero { background: transparent !important; }
+    .hero-bg { display: none; }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-eyebrow { color: var(--ak-pink) !important; }
+    .eyebrow-line { background: var(--ak-pink) !important; opacity: 0.5; }
+    .hero-title { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+    .ht-main { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+    .hero-subtitle { color: var(--ak-text-2) !important; opacity: 1 !important; }
+    .scroll-hint { color: var(--ak-text-2) !important; }
+    .scroll-dot { border-color: var(--ak-pink) !important; background: var(--ak-pink) !important; }
+
+    /* ── Buttons ──────────────────────────────────────────── */
+    .btn-primary {
+      background: var(--ak-grad) !important;
+      color: #fff !important;
+      border: none !important;
+      box-shadow: 0 4px 18px rgba(153,0,255,0.2) !important;
+    }
+    .btn-primary:hover {
+      opacity: 0.9 !important;
+      box-shadow: 0 8px 28px rgba(153,0,255,0.3) !important;
+    }
+    .btn-outline {
+      background: #fff !important;
+      color: var(--ak-blue) !important;
+      border: 2px solid var(--ak-blue) !important;
+    }
+    .btn-outline:hover {
+      background: var(--ak-blue) !important;
+      color: #fff !important;
+    }
+    .btn-icon { color: var(--ak-blue) !important; }
+
+    /* ── Sections ─────────────────────────────────────────── */
+    .section { background: transparent; }
+    .bg-alt { background: rgba(255,255,255,0.55) !important; }
+
+    .section-tag {
+      color: var(--ak-pink) !important;
+      border-color: rgba(255,20,147,0.25) !important;
+      background: transparent !important;
+    }
+    .section-header p { color: var(--ak-text-2) !important; opacity: 1 !important; }
+
+    /* ── Service cards ────────────────────────────────────── */
+    .service-card {
+      background: var(--ak-bg-card) !important;
+      border: 1px solid var(--ak-border) !important;
+      box-shadow: var(--ak-shadow) !important;
+    }
+    .service-card:hover {
+      box-shadow: var(--ak-shadow-lg) !important;
+      border-color: rgba(153,0,255,0.2) !important;
+    }
+    .service-card h3 { color: var(--ak-text) !important; }
+    .service-card p  { color: var(--ak-text-2) !important; }
+    .service-card li { color: var(--ak-text-2) !important; }
+    .service-card li::before { background: var(--ak-pink) !important; }
+    .service-card--cloud { border-top: 3px solid transparent !important; border-image: var(--ak-grad) 1 !important; }
+
+    /* ── Partner cards ────────────────────────────────────── */
+    .partner-card {
+      background: var(--ak-bg-card) !important;
+      border: 1px solid var(--ak-border) !important;
+      box-shadow: var(--ak-shadow) !important;
+      color: var(--ak-text) !important;
+    }
+    .partner-card:hover { box-shadow: var(--ak-shadow-lg) !important; border-color: rgba(153,0,255,0.25) !important; }
+    .partner-card h3 { color: var(--ak-text) !important; }
+    .partner-card p  { color: var(--ak-text-2) !important; }
+    .partner-cta { color: var(--ak-pink) !important; }
+    .partner-logo--dark { background: var(--ak-bg-lavender) !important; border-radius: 12px; padding: 6px; }
+
+    /* ── KPI cards ────────────────────────────────────────── */
+    .kpi-card {
+      background: var(--ak-bg-card) !important;
+      border: 1px solid var(--ak-border) !important;
+      box-shadow: var(--ak-shadow) !important;
+    }
+    .kpi-label { color: var(--ak-text-2) !important; }
+    .kpi-value,.kpi-number {
+      background: var(--ak-grad-text) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+    .kpi-unit { color: var(--ak-text-2) !important; opacity: 0.7 !important; }
+    .kpi-toolbar { color: var(--ak-text-2) !important; }
+    .kpi-status { background: var(--ak-grad) !important; color: #fff !important; }
+    .kpi-updated strong { color: var(--ak-text) !important; }
+
+    /* ── Team cards ───────────────────────────────────────── */
+    .team-card {
+      background: var(--ak-bg-card) !important;
+      border: 1px solid var(--ak-border) !important;
+      box-shadow: var(--ak-shadow) !important;
+    }
+    .team-card:hover { box-shadow: var(--ak-shadow-lg) !important; }
+    .team-card h3 { color: var(--ak-text) !important; }
+    .team-role { color: var(--ak-pink) !important; }
+    .team-card p { color: var(--ak-text-2) !important; }
+    .team-tag {
+      background: var(--ak-bg-lavender) !important;
+      color: var(--ak-purple) !important;
+      border: none !important;
+    }
+    .team-creds, .team-creds-list li { color: var(--ak-text-2) !important; }
+    .bar-pink  { background: linear-gradient(90deg,#FF1493,#EC00E8) !important; }
+    .bar-cyan  { background: linear-gradient(90deg,#1677FF,#00CFFF) !important; }
+    .badge-purple { background: var(--ak-bg-lavender) !important; color: var(--ak-purple) !important; border: 1px solid rgba(153,0,255,0.2) !important; }
+    .badge-cyan   { background: var(--ak-bg-blue) !important; color: var(--ak-blue) !important; border: 1px solid rgba(22,119,255,0.2) !important; }
+    .av-grad-1 { background: linear-gradient(135deg,#FF1493,#9900FF) !important; }
+    .av-grad-2 { background: linear-gradient(135deg,#1677FF,#00CFFF) !important; }
+
+    /* ── Capability cards ─────────────────────────────────── */
+    .cap-card {
+      background: var(--ak-bg-card) !important;
+      border: 1px solid var(--ak-border) !important;
+      box-shadow: var(--ak-shadow) !important;
+    }
+    .cap-card:hover { box-shadow: var(--ak-shadow-lg) !important; }
+    .cap-card h3 { color: var(--ak-text) !important; }
+    .cap-card p  { color: var(--ak-text-2) !important; }
+    .cap-stat-num, .cap-stat-sfx {
+      background: var(--ak-grad-text) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+    .cap-stat-lbl { color: var(--ak-text-2) !important; }
+    .cap-icon.grad-1 { background: linear-gradient(135deg,#FF1493,#9900FF) !important; }
+    .cap-icon.grad-4 { background: linear-gradient(135deg,#9900FF,#1677FF) !important; }
+    .cap-icon.grad-5 { background: linear-gradient(135deg,#1677FF,#00CFFF) !important; }
+    .cap-icon.grad-6 { background: linear-gradient(135deg,#FF1493,#EC00E8) !important; }
+    .cap-metric-bar { background: var(--ak-border) !important; }
+    .cap-metric-bar::after { background: var(--ak-grad) !important; }
+    .diag-accent { background: rgba(153,0,255,0.04) !important; }
+    .c-corner { border-color: rgba(153,0,255,0.2) !important; }
+
+    /* ── Testimonials ─────────────────────────────────────── */
+    .testimonial-card {
+      background: var(--ak-bg-card) !important;
+      border: 1px solid var(--ak-border) !important;
+      box-shadow: var(--ak-shadow) !important;
+    }
+    .testimonial-card:hover { box-shadow: var(--ak-shadow-lg) !important; }
+    .testimonial-quote { color: var(--ak-text-2) !important; opacity: 1 !important; }
+    .testimonial-author cite { color: var(--ak-text) !important; }
+    .testimonial-author span { color: var(--ak-text-2) !important; }
+
+    /* ── Connect / Lead form ──────────────────────────────── */
+    .connect-wrap { color: var(--ak-text) !important; }
+    .connect-text h2 { color: var(--ak-text) !important; }
+    .connect-text p  { color: var(--ak-text-2) !important; }
+    .contact-points a {
+      color: var(--ak-blue) !important;
+      border-color: var(--ak-border) !important;
+    }
+    .contact-points a:hover { color: var(--ak-pink) !important; }
+    .lead-form {
+      background: var(--ak-bg-card) !important;
+      border: 1px solid var(--ak-border) !important;
+      box-shadow: var(--ak-shadow-lg) !important;
+    }
+    .lead-form label { color: var(--ak-text) !important; }
+    .lead-form input,
+    .lead-form textarea {
+      background: var(--ak-bg) !important;
+      border: 1px solid var(--ak-border) !important;
+      color: var(--ak-text) !important;
+    }
+    .lead-form input:focus,
+    .lead-form textarea:focus {
+      border-color: var(--ak-purple) !important;
+      box-shadow: 0 0 0 3px rgba(153,0,255,0.1) !important;
+    }
+    .lead-feedback { color: var(--ak-purple) !important; }
+
+    /* ── CTA section ──────────────────────────────────────── */
+    .cta-section { background: transparent !important; }
+    .cta-box {
+      background: var(--ak-text) !important;
+      border: none !important;
+    }
+    .cta-box h2 { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+    .cta-box p  { color: rgba(255,255,255,0.75) !important; opacity: 1 !important; }
+    .cta-orb-1 { background: rgba(255,20,147,0.3) !important; }
+    .cta-orb-2 { background: rgba(153,0,255,0.25) !important; }
+    .cta-box .btn-primary { box-shadow: 0 4px 18px rgba(153,0,255,0.3) !important; }
+    .cta-box .btn-outline {
+      background: transparent !important;
+      color: #fff !important;
+      border-color: rgba(255,255,255,0.4) !important;
+    }
+    .cta-box .btn-outline:hover { background: rgba(255,255,255,0.12) !important; color: #fff !important; }
+    .cta-title { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    .footer {
+      background: var(--ak-text) !important;
+      color: rgba(255,255,255,0.85) !important;
+    }
+    .footer h4 { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+    .footer a { color: rgba(255,255,255,0.65) !important; }
+    .footer a:hover { color: var(--ak-pink) !important; }
+    .footer p  { color: rgba(255,255,255,0.55) !important; opacity: 1 !important; }
+    .footer-bottom p { color: rgba(255,255,255,0.35) !important; }
+    .footer-brand p  { color: rgba(255,255,255,0.55) !important; }
+
+    /* ── Back to top ──────────────────────────────────────── */
+    .back-top {
+      background: var(--ak-bg-card) !important;
+      border: 1px solid var(--ak-border) !important;
+      box-shadow: var(--ak-shadow) !important;
+    }
+
+    /* ── Animations keep working ──────────────────────────── */
+    .animate-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity .55s var(--ease-spring), transform .55s var(--ease-spring); }
+    .animate-on-scroll.visible { opacity: 1; transform: none; }
+
+    /* ── Mobile menu ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links {
+        background: var(--ak-bg-card) !important;
+        border-top: 1px solid var(--ak-border) !important;
+        box-shadow: var(--ak-shadow-lg) !important;
+      }
+      .nav-links a { color: var(--ak-text) !important; border-color: var(--ak-border) !important; }
+    }
+  </style>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -49,7 +366,7 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#hero" class="logo logo-img" aria-label="SelectAI home">
-        <img src="assets/images/logo-full.png" alt="SelectAI" height="42" width="auto" />
+        <img src="assets/images/logo-black.png" alt="SelectAI" height="42" width="auto" />
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#services">Services</a></li>
@@ -58,11 +375,12 @@
         <li><a href="#capabilities">Why Us</a></li>
         <li><a href="#live-metrics">Live KPI</a></li>
         <li><a href="#feedback">Stories</a></li>
-        <li><a href="/tools">AI Tools</a></li>
-        <li id="adminNavItem" style="display:none;"><a href="/admin">Admin</a></li>
+        <li><a href="tools.html">AI Tools</a></li>
+        <li><a href="ai-kits.html">AI Engineering Kits</a></li>
+        <li id="adminNavItem" style="display:none;"><a href="admin.html">Admin</a></li>
         <li><a href="#connect" class="nav-cta">Connect</a></li>
         <li class="nav-signin-item" id="navSignInItem">
-          <a href="/sign-in" class="nav-signin-btn">Sign In</a>
+          <a href="signin.html" class="nav-signin-btn">Sign In</a>
         </li>
         <li class="nav-user-item" id="navUserItem">
           <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()" aria-label="User menu" aria-haspopup="true" aria-expanded="false" aria-controls="navUserDropdown">
@@ -78,7 +396,7 @@
           <div class="nav-user-dropdown" id="navUserDropdown">
             <p class="nav-user-dropdown-hd" id="navUserDropdownName">Account</p>
             <div id="navUserAuthed">
-              <a href="/profile">Profile</a>
+              <a href="profile.html">Profile</a>
               <a href="/sign-in?forgot=1">Password Reset</a>
               <hr class="nav-user-dropdown-divider" />
               <a href="#" onclick="signOutUser(); return false;">Sign Out</a>
@@ -141,55 +459,519 @@
         <p>Enterprise-ready services designed for Healthcare, Finance, Retail, EdTech, and Enterprise IT.</p>
       </div>
 
-      <div class="services-grid">
-        <article class="service-card service-card--cloud animate-on-scroll animate-delay-1">
-          <h3>IT Services</h3>
-          <p>End-to-end cloud strategy, migration, and managed operations across AWS, Azure, and GCP — built for resilience, security, and scale.</p>
-          <ul>
-            <li>Cloud Migration</li>
-            <li>Cloud Infrastructure</li>
-            <li>Disaster Recovery</li>
-            <li>Infrastructure Managed Services</li>
-            <li>DevOps</li>
-            <li>DevSecOps</li>
-            <li>Triple Cloud</li>
-            <li>Application Modernization</li>
-            <li>Cloud Modernization</li>
-            <li>Cloud Architecture Review</li>
-            <li>Gen AI</li>
-          </ul>
-        </article>
-        <article class="service-card animate-on-scroll animate-delay-2">
-          <h3>SaaS Solutions</h3>
-          <p>Design and development of secure, scalable SaaS products with product analytics and rapid feature iteration.</p>
-          <ul>
-            <li>Multi-tenant architecture</li>
-            <li>99.9% uptime practices</li>
-            <li>Usage intelligence</li>
-          </ul>
-        </article>
-        <article class="service-card animate-on-scroll animate-delay-3">
-          <h3>AI Training and Certification</h3>
-          <p>Hands-on learning paths for teams, students, and professionals who want practical implementation depth and real-project confidence.</p>
-          <ul>
-            <li>Role-based curriculum</li>
-            <li>Practical capstone tracks</li>
-            <li>Completion-led outcomes</li>
-          </ul>
-          <div class="service-card-actions">
-            <a href="/practical-ai-ml-engineering" class="btn btn-outline">Practical AI/ML Engineering</a>
+      <div class="services-grid" id="servicesGrid">
+
+        <!-- ── IT Services ── -->
+        <article class="service-card svc-demo-card service-card--cloud animate-on-scroll animate-delay-1">
+          <div class="svc-card-head">
+            <div class="svc-card-icon" style="background:var(--ak-bg-blue);">☁️</div>
+            <div>
+              <h3>IT Services</h3>
+              <p>End-to-end cloud strategy, migration and managed operations across AWS, Azure, and GCP.</p>
+            </div>
+            <a href="#connect" class="svc-view-btn">View Details →</a>
+          </div>
+          <div class="svc-video-wrap" data-svc-video>
+            <video class="svc-video" muted playsinline preload="none"
+              poster="assets/images/logo-mark.png"
+              aria-label="IT Services demo animation">
+              <!-- Replace src with your actual video file -->
+              <source src="" type="video/mp4" />
+            </video>
+            <div class="svc-video-placeholder" aria-hidden="true">
+              <div class="svc-placeholder-screen">
+                <div class="svc-placeholder-bar"></div>
+                <div class="svc-placeholder-row"><span class="svc-ph-tag blue">Terraform</span><span class="svc-ph-tag">Python</span><span class="svc-ph-tag">Bash</span></div>
+                <div class="svc-code-block"><span class="svc-code-comment"># Provision VPC on AWS</span>
+resource <span class="svc-code-str">"aws_vpc" "main"</span> {
+  cidr_block = <span class="svc-code-str">"10.0.0.0/16"</span>
+  tags = {
+    Name = <span class="svc-code-str">"selectai-vpc"</span>
+  }
+}</div>
+                <div class="svc-demo-steps"><strong>Demo Steps</strong>
+                  <ol><li>Provision cloud infrastructure</li><li>Deploy applications</li><li>Configure security</li><li>Enable monitoring</li><li>Auto-scaling setup</li></ol>
+                </div>
+              </div>
+              <div class="svc-progress-anim" data-svc-progress></div>
+            </div>
+            <div class="svc-video-controls" role="group" aria-label="Video controls">
+              <button class="svc-ctrl-btn svc-play-btn" aria-label="Play/Pause" data-svc-play>
+                <svg class="svc-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
+                <svg class="svc-icon-pause" viewBox="0 0 16 16" fill="currentColor" style="display:none"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>
+              </button>
+              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="svc-progress-fill" data-svc-fill></div>
+              </div>
+              <span class="svc-time" data-svc-time>0:00 / 0:20</span>
+              <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
+              <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
+            </div>
           </div>
         </article>
-        <article class="service-card animate-on-scroll animate-delay-4">
-          <h3>R&D Consultancy</h3>
-          <p>Experimentation-to-production advisory for AI products, proof-of-concepts, and measurable business impact.</p>
-          <ul>
-            <li>Use-case discovery</li>
-            <li>MVP acceleration</li>
-            <li>ROI-guided roadmaps</li>
-          </ul>
+
+        <!-- ── SaaS Solutions ── -->
+        <article class="service-card svc-demo-card animate-on-scroll animate-delay-2">
+          <div class="svc-card-head">
+            <div class="svc-card-icon" style="background:var(--ak-bg-lavender);">🧩</div>
+            <div>
+              <h3>SaaS Solutions</h3>
+              <p>Design and development of secure, scalable SaaS products with product analytics and rapid feature iteration.</p>
+            </div>
+            <a href="#connect" class="svc-view-btn">View Details →</a>
+          </div>
+          <div class="svc-video-wrap" data-svc-video>
+            <video class="svc-video" muted playsinline preload="none"
+              poster="assets/images/logo-mark.png"
+              aria-label="SaaS Solutions demo animation">
+              <source src="" type="video/mp4" />
+            </video>
+            <div class="svc-video-placeholder" aria-hidden="true">
+              <div class="svc-placeholder-screen">
+                <div class="svc-placeholder-bar"></div>
+                <div class="svc-placeholder-row"><span class="svc-ph-tag purple">Python</span><span class="svc-ph-tag">FastAPI</span><span class="svc-ph-tag">React</span></div>
+                <div class="svc-code-block"><span class="svc-code-comment"># Create API endpoint</span>
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+<span class="svc-code-str">@app.post("/projects")</span>
+async def create_project(proj):
+  return {<span class="svc-code-str">"status"</span>: <span class="svc-code-str">"success"</span>}</div>
+                <div class="svc-demo-steps"><strong>Demo Steps</strong>
+                  <ol><li>User signup &amp; login</li><li>Create a new project</li><li>View real-time analytics</li><li>Manage team &amp; tasks</li><li>Deploy new feature</li></ol>
+                </div>
+              </div>
+              <div class="svc-progress-anim" data-svc-progress></div>
+            </div>
+            <div class="svc-video-controls" role="group" aria-label="Video controls">
+              <button class="svc-ctrl-btn svc-play-btn" aria-label="Play/Pause" data-svc-play>
+                <svg class="svc-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
+                <svg class="svc-icon-pause" viewBox="0 0 16 16" fill="currentColor" style="display:none"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>
+              </button>
+              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="svc-progress-fill" data-svc-fill></div>
+              </div>
+              <span class="svc-time" data-svc-time>0:00 / 0:25</span>
+              <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
+              <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
+            </div>
+          </div>
         </article>
+
+        <!-- ── AI Training ── -->
+        <article class="service-card svc-demo-card animate-on-scroll animate-delay-3">
+          <div class="svc-card-head">
+            <div class="svc-card-icon" style="background:var(--ak-bg-pink);">🎓</div>
+            <div>
+              <h3>AI Training &amp; Certification</h3>
+              <p>Hands-on learning paths for teams, students and professionals who want practical implementation depth and real-project confidence.</p>
+            </div>
+            <a href="ai-kits.html" class="svc-view-btn">View Details →</a>
+          </div>
+          <div class="svc-video-wrap" data-svc-video>
+            <video class="svc-video" muted playsinline preload="none"
+              poster="assets/images/logo-mark.png"
+              aria-label="AI Training demo animation">
+              <source src="" type="video/mp4" />
+            </video>
+            <div class="svc-video-placeholder" aria-hidden="true">
+              <div class="svc-placeholder-screen">
+                <div class="svc-placeholder-bar"></div>
+                <div class="svc-placeholder-row"><span class="svc-ph-tag purple">Python</span><span class="svc-ph-tag">LangChain</span><span class="svc-ph-tag">OpenAI</span></div>
+                <div class="svc-code-block"><span class="svc-code-comment"># Load documents</span>
+from langchain.document_loaders
+  import DirectoryLoader
+
+loader = DirectoryLoader(<span class="svc-code-str">"data/"</span>)
+docs = loader.load()
+
+<span class="svc-code-comment"># Create embeddings</span>
+embeddings = OpenAIEmbeddings()
+vector_store = FAISS.from_docs</div>
+                <div class="svc-demo-steps"><strong>Demo Steps</strong>
+                  <ol><li>Open the AI kit</li><li>Follow guided lab</li><li>Run the code</li><li>See real-time output</li><li>Complete and get certificate</li></ol>
+                </div>
+              </div>
+              <div class="svc-progress-anim" data-svc-progress></div>
+            </div>
+            <div class="svc-video-controls" role="group" aria-label="Video controls">
+              <button class="svc-ctrl-btn svc-play-btn" aria-label="Play/Pause" data-svc-play>
+                <svg class="svc-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
+                <svg class="svc-icon-pause" viewBox="0 0 16 16" fill="currentColor" style="display:none"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>
+              </button>
+              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="svc-progress-fill" data-svc-fill></div>
+              </div>
+              <span class="svc-time" data-svc-time>0:00 / 0:30</span>
+              <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
+              <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── R&D Consultancy ── -->
+        <article class="service-card svc-demo-card animate-on-scroll animate-delay-4">
+          <div class="svc-card-head">
+            <div class="svc-card-icon" style="background:#FFF4E5;">📊</div>
+            <div>
+              <h3>R&amp;D Consultancy</h3>
+              <p>Experimentation-to-production advisory for AI products, proof-of-concepts, and measurable business impact.</p>
+            </div>
+            <a href="#connect" class="svc-view-btn">View Details →</a>
+          </div>
+          <div class="svc-video-wrap" data-svc-video>
+            <video class="svc-video" muted playsinline preload="none"
+              poster="assets/images/logo-mark.png"
+              aria-label="R&D Consultancy demo animation">
+              <source src="" type="video/mp4" />
+            </video>
+            <div class="svc-video-placeholder" aria-hidden="true">
+              <div class="svc-placeholder-screen">
+                <div class="svc-placeholder-bar"></div>
+                <div class="svc-placeholder-row"><span class="svc-ph-tag orange">Python</span><span class="svc-ph-tag">Pandas</span><span class="svc-ph-tag">Scikit-learn</span></div>
+                <div class="svc-code-block"><span class="svc-code-comment"># Evaluate model performance</span>
+import pandas as pd
+from sklearn.metrics import
+  accuracy_score, classification
+
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test)
+print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
+                <div class="svc-demo-steps"><strong>Demo Steps</strong>
+                  <ol><li>Define business problem</li><li>Build and test prototype</li><li>Evaluate results</li><li>Create ROI analysis</li><li>Plan production rollout</li></ol>
+                </div>
+              </div>
+              <div class="svc-progress-anim" data-svc-progress></div>
+            </div>
+            <div class="svc-video-controls" role="group" aria-label="Video controls">
+              <button class="svc-ctrl-btn svc-play-btn" aria-label="Play/Pause" data-svc-play>
+                <svg class="svc-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
+                <svg class="svc-icon-pause" viewBox="0 0 16 16" fill="currentColor" style="display:none"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>
+              </button>
+              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="svc-progress-fill" data-svc-fill></div>
+              </div>
+              <span class="svc-time" data-svc-time>0:00 / 0:25</span>
+              <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
+              <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
+            </div>
+          </div>
+        </article>
+
       </div>
+
+      <style>
+        /* ── Service Demo Cards ─────────────────────────── */
+        .services-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+        }
+        .svc-demo-card { padding: 0 !important; overflow: hidden !important; }
+
+        .svc-card-head {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          padding: 1.4rem 1.5rem 1rem;
+        }
+        .svc-card-icon {
+          width: 44px; height: 44px; border-radius: 12px;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 1.3rem; flex-shrink: 0;
+        }
+        .svc-card-head h3 { font-size: 1rem !important; margin-bottom: 0.25rem; }
+        .svc-card-head p  { font-size: 0.82rem !important; line-height: 1.5; margin: 0; }
+        .svc-view-btn {
+          margin-left: auto; flex-shrink: 0;
+          font-size: 0.78rem; font-weight: 700;
+          color: var(--ak-pink) !important;
+          background: var(--ak-bg-pink);
+          border: 1px solid rgba(255,20,147,0.2);
+          border-radius: 20px;
+          padding: 0.35rem 0.9rem;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: background 0.2s, color 0.2s;
+        }
+        .svc-view-btn:hover { background: var(--ak-pink); color: #fff !important; }
+
+        /* video wrapper */
+        .svc-video-wrap {
+          position: relative;
+          background: #0d1117;
+          border-top: 1px solid var(--ak-border);
+        }
+        .svc-video {
+          width: 100%; display: block;
+          max-height: 220px; object-fit: cover;
+        }
+        .svc-video:not([src]), .svc-video[src=""] { display: none; }
+
+        /* animated placeholder (shown when no video src) */
+        .svc-video-placeholder {
+          min-height: 200px;
+          background: #0d1117;
+          display: flex; flex-direction: column;
+          overflow: hidden;
+        }
+        .svc-placeholder-screen {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.6rem;
+          padding: 0.8rem 1rem;
+          flex: 1;
+        }
+        .svc-placeholder-bar {
+          grid-column: 1 / -1;
+          display: flex; align-items: center; gap: 0.4rem;
+          margin-bottom: 0.3rem;
+        }
+        .svc-placeholder-bar::before {
+          content: '';
+          width: 24px; height: 24px; border-radius: 6px;
+          background: linear-gradient(135deg,#FF1493,#9900FF);
+          display: inline-block;
+        }
+        .svc-placeholder-bar::after {
+          content: 'selectAI';
+          font-family: 'Orbitron', sans-serif;
+          font-size: 0.6rem; font-weight: 700;
+          color: #fff;
+        }
+        .svc-placeholder-row {
+          grid-column: 1 / -1;
+          display: flex; gap: 0.35rem; flex-wrap: wrap;
+        }
+        .svc-ph-tag {
+          font-size: 0.65rem; font-weight: 600;
+          padding: 0.15rem 0.55rem; border-radius: 4px;
+          background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+        }
+        .svc-ph-tag.blue   { background: rgba(22,119,255,0.2);  color: #60a5fa; }
+        .svc-ph-tag.purple { background: rgba(153,0,255,0.2);   color: #c084fc; }
+        .svc-ph-tag.orange { background: rgba(245,158,11,0.2);  color: #fbbf24; }
+
+        .svc-code-block {
+          grid-column: 1;
+          font-family: 'Space Grotesk', monospace;
+          font-size: 0.6rem; line-height: 1.55;
+          color: rgba(255,255,255,0.65);
+          background: rgba(255,255,255,0.04);
+          border-radius: 6px; padding: 0.5rem 0.65rem;
+          white-space: pre; overflow: hidden;
+          position: relative;
+        }
+        /* typing cursor animation */
+        .svc-code-block::after {
+          content: '▋';
+          color: #FF1493;
+          animation: svc-blink 1s steps(1) infinite;
+        }
+        @keyframes svc-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        .svc-code-comment { color: #6b7a8d; }
+        .svc-code-str     { color: #ff9d6c; }
+
+        .svc-demo-steps {
+          grid-column: 2;
+          font-size: 0.65rem; color: rgba(255,255,255,0.7);
+        }
+        .svc-demo-steps strong {
+          display: block; color: #fff;
+          font-size: 0.68rem; margin-bottom: 0.4rem;
+          font-family: 'Orbitron', sans-serif;
+        }
+        .svc-demo-steps ol {
+          padding-left: 1rem;
+          display: flex; flex-direction: column; gap: 0.3rem;
+        }
+        .svc-demo-steps li { line-height: 1.4; }
+
+        /* animated progress line at bottom of placeholder */
+        .svc-progress-anim {
+          height: 2px;
+          background: rgba(255,255,255,0.08);
+          position: relative;
+          overflow: hidden;
+        }
+        .svc-progress-anim::after {
+          content: '';
+          position: absolute; inset-block: 0; left: -40%;
+          width: 40%;
+          background: linear-gradient(90deg,transparent,#FF1493,#9900FF,transparent);
+          animation: svc-scan 2s linear infinite;
+        }
+        @keyframes svc-scan { to { left: 100%; } }
+
+        /* video controls bar */
+        .svc-video-controls {
+          display: flex; align-items: center; gap: 0.6rem;
+          padding: 0.55rem 0.9rem;
+          background: #161b22;
+          border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .svc-ctrl-btn {
+          background: none; border: none; cursor: pointer;
+          color: rgba(255,255,255,0.6); font-size: 1rem;
+          display: flex; align-items: center; justify-content: center;
+          width: 26px; height: 26px; border-radius: 6px;
+          transition: background 0.15s, color 0.15s;
+          flex-shrink: 0;
+        }
+        .svc-ctrl-btn svg { width: 14px; height: 14px; }
+        .svc-ctrl-btn:hover { background: rgba(255,20,147,0.15); color: #FF1493; }
+
+        .svc-play-btn { background: rgba(255,20,147,0.18); color: #FF1493; }
+        .svc-play-btn:hover { background: #FF1493; color: #fff; }
+
+        .svc-progress-bar {
+          flex: 1; height: 4px; border-radius: 2px;
+          background: rgba(255,255,255,0.12);
+          position: relative; cursor: pointer;
+          overflow: hidden;
+        }
+        .svc-progress-fill {
+          height: 100%; width: 0%;
+          background: linear-gradient(90deg,#FF1493,#9900FF);
+          border-radius: 2px;
+          transition: width 0.1s linear;
+        }
+        .svc-time {
+          font-size: 0.65rem; color: rgba(255,255,255,0.4);
+          white-space: nowrap; font-family: 'Orbitron', sans-serif;
+        }
+
+        /* reduced-motion: freeze animations */
+        @media (prefers-reduced-motion: reduce) {
+          .svc-progress-anim::after { animation: none; }
+          .svc-code-block::after    { animation: none; }
+          .svc-video { animation: none !important; }
+        }
+
+        /* mobile: single column */
+        @media (max-width: 768px) {
+          .services-grid { grid-template-columns: 1fr !important; }
+          .svc-placeholder-screen { grid-template-columns: 1fr; }
+          .svc-code-block, .svc-demo-steps { grid-column: 1; }
+          .svc-card-head { flex-wrap: wrap; }
+          .svc-view-btn  { margin-left: 0; }
+        }
+      </style>
+
+      <script>
+      /* ── Service card animation controller ────────────── */
+      (function () {
+        'use strict';
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        /* For each card with data-svc-video we run an animated demo
+           using the placeholder. If a real <video src> is provided it
+           takes over automatically. */
+        document.querySelectorAll('[data-svc-video]').forEach(function (wrap) {
+          var video      = wrap.querySelector('.svc-video');
+          var placeholder= wrap.querySelector('.svc-video-placeholder');
+          var playBtn    = wrap.querySelector('[data-svc-play]');
+          var replayBtn  = wrap.querySelector('[data-svc-replay]');
+          var fsBtn      = wrap.querySelector('[data-svc-fs]');
+          var fill       = wrap.querySelector('[data-svc-fill]');
+          var timeEl     = wrap.querySelector('[data-svc-time]');
+          var progressBar= wrap.querySelector('.svc-progress-bar');
+          var iconPlay   = playBtn && playBtn.querySelector('.svc-icon-play');
+          var iconPause  = playBtn && playBtn.querySelector('.svc-icon-pause');
+
+          var hasRealVideo = video && video.querySelector('source[src]:not([src=""])');
+          var duration = parseInt((timeEl && timeEl.textContent.split('/')[1]) || '20') || 20;
+          var current  = 0;
+          var playing  = false;
+          var raf      = null;
+          var last     = null;
+
+          function setPlaying(state) {
+            playing = state;
+            if (iconPlay)  iconPlay.style.display  = state ? 'none'        : '';
+            if (iconPause) iconPause.style.display = state ? ''            : 'none';
+            if (hasRealVideo) { state ? video.play() : video.pause(); }
+          }
+
+          function tick(ts) {
+            if (!last) last = ts;
+            var delta = (ts - last) / 1000;
+            last = ts;
+            current = Math.min(current + delta, duration);
+            var pct = (current / duration) * 100;
+            if (fill) { fill.style.width = pct + '%'; }
+            if (timeEl) {
+              var cur = Math.floor(current);
+              timeEl.textContent =
+                Math.floor(cur/60) + ':' + ('0'+cur%60).slice(-2) +
+                ' / ' +
+                Math.floor(duration/60) + ':' + ('0'+duration%60).slice(-2);
+            }
+            if (progressBar) progressBar.setAttribute('aria-valuenow', Math.round(pct));
+            if (current < duration && playing) {
+              raf = requestAnimationFrame(tick);
+            } else if (current >= duration) {
+              setPlaying(false);
+              last = null;
+            }
+          }
+
+          function play()  { if (!playing) { setPlaying(true); last = null; raf = requestAnimationFrame(tick); } }
+          function pause() { if (playing)  { setPlaying(false); cancelAnimationFrame(raf); } }
+          function replay(){ current = 0; last = null; if (fill) fill.style.width = '0%'; play(); }
+
+          if (playBtn)  playBtn.addEventListener('click',  function () { playing ? pause() : play(); });
+          if (replayBtn)replayBtn.addEventListener('click', replay);
+          if (fsBtn) {
+            fsBtn.addEventListener('click', function () {
+              var target = hasRealVideo ? video : wrap;
+              if (document.fullscreenElement) {
+                document.exitFullscreen();
+              } else {
+                target.requestFullscreen && target.requestFullscreen();
+              }
+            });
+          }
+
+          /* click on progress bar to seek */
+          if (progressBar) {
+            progressBar.addEventListener('click', function (e) {
+              var rect = progressBar.getBoundingClientRect();
+              var pct  = (e.clientX - rect.left) / rect.width;
+              current  = pct * duration;
+              if (hasRealVideo) video.currentTime = current;
+              last = null;
+            });
+          }
+
+          /* sync real video time → progress bar */
+          if (hasRealVideo) {
+            video.addEventListener('timeupdate', function () {
+              current  = video.currentTime;
+              duration = video.duration || duration;
+              var pct  = (current / duration) * 100;
+              if (fill) fill.style.width = pct + '%';
+            });
+            video.addEventListener('ended', function () { setPlaying(false); });
+            if (placeholder) placeholder.style.display = 'none';
+          }
+
+          /* IntersectionObserver: play on enter, pause on leave */
+          if (!prefersReduced) {
+            var io = new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) { play(); }
+                else                  { pause(); }
+              });
+            }, { threshold: 0.4 });
+            io.observe(wrap);
+          }
+        });
+      }());
+      </script>
     </div>
   </section>
 
@@ -636,7 +1418,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#hero" class="logo logo-img" aria-label="SelectAI home">
-            <img src="assets/images/logo-full.png" alt="SelectAI" height="44" width="auto" />
+            <img src="assets/images/logo-black.png" alt="SelectAI" height="44" width="auto" />
           </a>
           <p>Future Ready AI Solutions for Tomorrow's Challenges. Established by 2 Strong Women.</p>
         </div>
@@ -650,6 +1432,7 @@
             <li><a href="#capabilities">Why SelectAI</a></li>
             <li><a href="#live-metrics">Live KPI</a></li>
             <li><a href="#feedback">Stories</a></li>
+            <li><a href="ai-kits.html">AI Engineering Kits</a></li>
             <li><a href="#connect">Connect</a></li>
           </ul>
         </div>

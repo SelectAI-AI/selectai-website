@@ -76,8 +76,40 @@
       backdrop-filter: blur(18px) !important;
       box-shadow: 0 2px 20px rgba(35,31,100,0.07) !important;
     }
-    .nav-links a { color: var(--ak-text) !important; }
-    .nav-links a:hover { color: var(--ak-pink) !important; }
+    /* ── Nav spacing ─────────────────────────────────────── */
+    .nav-container {
+      gap: 0 !important;
+      justify-content: space-between !important;
+    }
+    .nav-links {
+      gap: 0 !important;
+      flex-wrap: nowrap !important;
+    }
+    .nav-links li { padding: 0 !important; margin: 0 !important; }
+    .nav-links li:first-child { margin-left: 0 !important; }
+
+    /* ── Nav link text ─────────────────────────────────────── */
+    .nav-links a {
+      font-size: 0.72rem !important;
+      letter-spacing: 0.04em !important;
+      padding: 0.3rem 0.55rem !important;
+      white-space: nowrap !important;
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
+    }
+    .nav-links a:hover {
+      color: var(--ak-pink) !important;
+      -webkit-text-fill-color: var(--ak-pink) !important;
+    }
+
+    /* shrink logo slightly to give nav more room */
+    .navbar .logo-img img { height: 34px !important; }
+
+    /* Sign In button smaller */
+    .nav-signin-btn {
+      font-size: 0.72rem !important;
+      padding: 0.3rem 0.7rem !important;
+    }
     .nav-cta {
       background: var(--ak-grad) !important;
       -webkit-background-clip: text !important;
@@ -113,7 +145,7 @@
     .hero { background: transparent !important; }
     .hero-bg { display: none; }
     .hero-content { position: relative; z-index: 1; }
-    .hero-eyebrow { color: var(--ak-pink) !important; }
+    .hero-eyebrow { color: var(--ak-pink) !important; font-size: 1rem !important; letter-spacing: 0.28em !important; font-weight: 700 !important; }
     .eyebrow-line { background: var(--ak-pink) !important; opacity: 0.5; }
     .hero-title { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
     .ht-main { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
@@ -168,7 +200,7 @@
     .service-card p  { color: var(--ak-text-2) !important; }
     .service-card li { color: var(--ak-text-2) !important; }
     .service-card li::before { background: var(--ak-pink) !important; }
-    .service-card--cloud { border-top: 3px solid transparent !important; border-image: var(--ak-grad) 1 !important; }
+    .service-card--cloud { border-top: none !important; border-image: none !important; }
 
     /* ── Partner cards ────────────────────────────────────── */
     .partner-card {
@@ -199,7 +231,8 @@
     .kpi-unit { color: var(--ak-text-2) !important; opacity: 0.7 !important; }
     .kpi-toolbar { color: var(--ak-text-2) !important; }
     .kpi-status { background: var(--ak-grad) !important; color: #fff !important; }
-    .kpi-updated strong { color: var(--ak-text) !important; }
+    .kpi-updated { color: #000000 !important; }
+    .kpi-updated strong { color: #000000 !important; }
 
     /* ── Team cards ───────────────────────────────────────── */
     .team-card {
@@ -321,10 +354,11 @@
 
     /* ── Back to top ──────────────────────────────────────── */
     .back-top {
-      background: var(--ak-bg-card) !important;
-      border: 1px solid var(--ak-border) !important;
-      box-shadow: var(--ak-shadow) !important;
+      background: var(--ak-grad) !important;
+      border: none !important;
+      box-shadow: 0 4px 16px rgba(153,0,255,0.3) !important;
     }
+    .back-top img { filter: brightness(0) invert(1); }
 
     /* ── Animations keep working ──────────────────────────── */
     .animate-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity .55s var(--ease-spring), transform .55s var(--ease-spring); }
@@ -462,7 +496,7 @@
       <div class="services-grid" id="servicesGrid">
 
         <!-- ── IT Services ── -->
-        <article class="service-card svc-demo-card service-card--cloud animate-on-scroll animate-delay-1">
+        <article class="service-card svc-demo-card animate-on-scroll animate-delay-1" style="border-top:3px solid #1677FF !important;">
           <div class="svc-card-head">
             <div class="svc-card-icon" style="background:var(--ak-bg-blue);">☁️</div>
             <div>
@@ -553,7 +587,7 @@ async def create_project(proj):
               <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 <div class="svc-progress-fill" data-svc-fill></div>
               </div>
-              <span class="svc-time" data-svc-time>0:00 / 0:25</span>
+              <span class="svc-time" data-svc-time>0:00 / 0:20</span>
               <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
               <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
             </div>
@@ -604,7 +638,7 @@ vector_store = FAISS.from_docs</div>
               <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 <div class="svc-progress-fill" data-svc-fill></div>
               </div>
-              <span class="svc-time" data-svc-time>0:00 / 0:30</span>
+              <span class="svc-time" data-svc-time>0:00 / 0:20</span>
               <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
               <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
             </div>
@@ -653,7 +687,7 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
               <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 <div class="svc-progress-fill" data-svc-fill></div>
               </div>
-              <span class="svc-time" data-svc-time>0:00 / 0:25</span>
+              <span class="svc-time" data-svc-time>0:00 / 0:20</span>
               <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
               <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
             </div>
@@ -671,11 +705,15 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
         }
         .svc-demo-card { padding: 0 !important; overflow: hidden !important; }
 
+        /* ── Card header ── */
         .svc-card-head {
           display: flex;
           align-items: flex-start;
           gap: 1rem;
-          padding: 1.4rem 1.5rem 1rem;
+          padding: 1.2rem 1.5rem 1rem;
+          height: 100px;
+          box-sizing: border-box;
+          overflow: hidden;
         }
         .svc-card-icon {
           width: 44px; height: 44px; border-radius: 12px;
@@ -686,7 +724,7 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
         .svc-card-head p  { font-size: 0.82rem !important; line-height: 1.5; margin: 0; }
         .svc-view-btn {
           margin-left: auto; flex-shrink: 0;
-          font-size: 0.78rem; font-weight: 700;
+          font-size: 0.75rem; font-weight: 700;
           color: var(--ak-pink) !important;
           background: var(--ak-bg-pink);
           border: 1px solid rgba(255,20,147,0.2);
@@ -698,7 +736,7 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
         }
         .svc-view-btn:hover { background: var(--ak-pink); color: #fff !important; }
 
-        /* video wrapper */
+        /* ── Video wrapper ── */
         .svc-video-wrap {
           position: relative;
           background: #0d1117;
@@ -706,123 +744,139 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
         }
         .svc-video {
           width: 100%; display: block;
-          max-height: 220px; object-fit: cover;
+          height: 210px; object-fit: cover;
         }
         .svc-video:not([src]), .svc-video[src=""] { display: none; }
 
-        /* animated placeholder (shown when no video src) */
+        /* ── Placeholder — FIXED height so all 4 are identical ── */
         .svc-video-placeholder {
-          min-height: 200px;
+          height: 210px;
           background: #0d1117;
-          display: flex; flex-direction: column;
+          display: flex;
+          flex-direction: column;
           overflow: hidden;
         }
+
+        /* ── Inner screen grid — fixed 4-row layout ── */
         .svc-placeholder-screen {
+          flex: 1;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 0.6rem;
-          padding: 0.8rem 1rem;
-          flex: 1;
+          grid-template-rows: 22px 18px 1fr;
+          gap: 0.4rem 0.6rem;
+          padding: 0.75rem 1rem 0.5rem;
+          overflow: hidden;
         }
+
+        /* row 1: logo bar — spans full width */
         .svc-placeholder-bar {
           grid-column: 1 / -1;
+          grid-row: 1;
           display: flex; align-items: center; gap: 0.4rem;
-          margin-bottom: 0.3rem;
         }
         .svc-placeholder-bar::before {
           content: '';
-          width: 24px; height: 24px; border-radius: 6px;
+          width: 20px; height: 20px; border-radius: 5px;
           background: linear-gradient(135deg,#FF1493,#9900FF);
-          display: inline-block;
+          display: inline-block; flex-shrink: 0;
         }
         .svc-placeholder-bar::after {
           content: 'selectAI';
           font-family: 'Orbitron', sans-serif;
-          font-size: 0.6rem; font-weight: 700;
+          font-size: 0.58rem; font-weight: 700;
           color: #fff;
         }
+
+        /* row 2: tech tags — spans full width */
         .svc-placeholder-row {
           grid-column: 1 / -1;
-          display: flex; gap: 0.35rem; flex-wrap: wrap;
+          grid-row: 2;
+          display: flex; gap: 0.3rem; align-items: center;
+          overflow: hidden;
         }
         .svc-ph-tag {
-          font-size: 0.65rem; font-weight: 600;
-          padding: 0.15rem 0.55rem; border-radius: 4px;
+          font-size: 0.62rem; font-weight: 600;
+          padding: 0.12rem 0.5rem; border-radius: 4px;
           background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+          white-space: nowrap;
         }
-        .svc-ph-tag.blue   { background: rgba(22,119,255,0.2);  color: #60a5fa; }
-        .svc-ph-tag.purple { background: rgba(153,0,255,0.2);   color: #c084fc; }
-        .svc-ph-tag.orange { background: rgba(245,158,11,0.2);  color: #fbbf24; }
+        .svc-ph-tag.blue   { background: rgba(22,119,255,0.25); color: #60a5fa; }
+        .svc-ph-tag.purple { background: rgba(153,0,255,0.25);  color: #c084fc; }
+        .svc-ph-tag.orange { background: rgba(245,158,11,0.25); color: #fbbf24; }
 
+        /* row 3: code (left) + steps (right) */
         .svc-code-block {
           grid-column: 1;
+          grid-row: 3;
           font-family: 'Space Grotesk', monospace;
-          font-size: 0.6rem; line-height: 1.55;
+          font-size: 0.58rem; line-height: 1.5;
           color: rgba(255,255,255,0.65);
-          background: rgba(255,255,255,0.04);
-          border-radius: 6px; padding: 0.5rem 0.65rem;
+          background: rgba(255,255,255,0.05);
+          border-radius: 6px; padding: 0.45rem 0.6rem;
           white-space: pre; overflow: hidden;
           position: relative;
+          align-self: stretch;
         }
-        /* typing cursor animation */
         .svc-code-block::after {
           content: '▋';
           color: #FF1493;
           animation: svc-blink 1s steps(1) infinite;
         }
         @keyframes svc-blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
         .svc-code-comment { color: #6b7a8d; }
         .svc-code-str     { color: #ff9d6c; }
 
         .svc-demo-steps {
           grid-column: 2;
-          font-size: 0.65rem; color: rgba(255,255,255,0.7);
+          grid-row: 3;
+          font-size: 0.62rem; color: rgba(255,255,255,0.7);
+          overflow: hidden;
+          align-self: stretch;
         }
         .svc-demo-steps strong {
           display: block; color: #fff;
-          font-size: 0.68rem; margin-bottom: 0.4rem;
+          font-size: 0.65rem; margin-bottom: 0.35rem;
           font-family: 'Orbitron', sans-serif;
+          letter-spacing: 0.05em;
         }
         .svc-demo-steps ol {
-          padding-left: 1rem;
-          display: flex; flex-direction: column; gap: 0.3rem;
+          padding-left: 1rem; margin: 0;
+          display: flex; flex-direction: column; gap: 0.28rem;
         }
-        .svc-demo-steps li { line-height: 1.4; }
+        .svc-demo-steps li { line-height: 1.35; }
 
-        /* animated progress line at bottom of placeholder */
+        /* ── Scan line at bottom of placeholder ── */
         .svc-progress-anim {
           height: 2px;
-          background: rgba(255,255,255,0.08);
-          position: relative;
-          overflow: hidden;
+          background: rgba(255,255,255,0.06);
+          position: relative; overflow: hidden;
+          flex-shrink: 0;
         }
         .svc-progress-anim::after {
           content: '';
-          position: absolute; inset-block: 0; left: -40%;
-          width: 40%;
+          position: absolute; inset-block: 0; left: -40%; width: 40%;
           background: linear-gradient(90deg,transparent,#FF1493,#9900FF,transparent);
           animation: svc-scan 2s linear infinite;
         }
         @keyframes svc-scan { to { left: 100%; } }
 
-        /* video controls bar */
+        /* ── Controls bar — identical across all 4 ── */
         .svc-video-controls {
           display: flex; align-items: center; gap: 0.6rem;
-          padding: 0.55rem 0.9rem;
+          padding: 0.5rem 0.9rem;
           background: #161b22;
           border-top: 1px solid rgba(255,255,255,0.06);
         }
         .svc-ctrl-btn {
           background: none; border: none; cursor: pointer;
-          color: rgba(255,255,255,0.6); font-size: 1rem;
+          color: rgba(255,255,255,0.55); font-size: 1rem;
           display: flex; align-items: center; justify-content: center;
           width: 26px; height: 26px; border-radius: 6px;
           transition: background 0.15s, color 0.15s;
           flex-shrink: 0;
         }
         .svc-ctrl-btn svg { width: 14px; height: 14px; }
-        .svc-ctrl-btn:hover { background: rgba(255,20,147,0.15); color: #FF1493; }
+        .svc-ctrl-btn:hover { background: rgba(255,20,147,0.18); color: #FF1493; }
 
         .svc-play-btn { background: rgba(255,20,147,0.18); color: #FF1493; }
         .svc-play-btn:hover { background: #FF1493; color: #fff; }
@@ -830,8 +884,7 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
         .svc-progress-bar {
           flex: 1; height: 4px; border-radius: 2px;
           background: rgba(255,255,255,0.12);
-          position: relative; cursor: pointer;
-          overflow: hidden;
+          cursor: pointer; overflow: hidden;
         }
         .svc-progress-fill {
           height: 100%; width: 0%;
@@ -840,22 +893,56 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
           transition: width 0.1s linear;
         }
         .svc-time {
-          font-size: 0.65rem; color: rgba(255,255,255,0.4);
+          font-size: 0.62rem; color: rgba(255,255,255,0.4);
           white-space: nowrap; font-family: 'Orbitron', sans-serif;
         }
 
-        /* reduced-motion: freeze animations */
+        /* ── Per-card accent colours ── */
+        /* Card 1 — IT Services (blue) */
+        .svc-demo-card:nth-child(1) { border-top: 3px solid #1677FF !important; }
+        .svc-demo-card:nth-child(1) .svc-play-btn { background: rgba(22,119,255,0.18); color: #60a5fa; }
+        .svc-demo-card:nth-child(1) .svc-play-btn:hover { background: #1677FF; color: #fff; }
+        .svc-demo-card:nth-child(1) .svc-progress-fill { background: linear-gradient(90deg,#1677FF,#00CFFF); }
+        .svc-demo-card:nth-child(1) .svc-progress-anim::after { background: linear-gradient(90deg,transparent,#1677FF,#00CFFF,transparent); }
+        .svc-demo-card:nth-child(1) .svc-code-block::after { color: #60a5fa; }
+
+        /* Card 2 — SaaS (purple) */
+        .svc-demo-card:nth-child(2) { border-top: 3px solid #9900FF !important; }
+        .svc-demo-card:nth-child(2) .svc-play-btn { background: rgba(153,0,255,0.18); color: #c084fc; }
+        .svc-demo-card:nth-child(2) .svc-play-btn:hover { background: #9900FF; color: #fff; }
+        .svc-demo-card:nth-child(2) .svc-progress-fill { background: linear-gradient(90deg,#9900FF,#EC00E8); }
+        .svc-demo-card:nth-child(2) .svc-progress-anim::after { background: linear-gradient(90deg,transparent,#9900FF,#EC00E8,transparent); }
+        .svc-demo-card:nth-child(2) .svc-code-block::after { color: #c084fc; }
+
+        /* Card 3 — AI Training (pink) */
+        .svc-demo-card:nth-child(3) { border-top: 3px solid #FF1493 !important; }
+        .svc-demo-card:nth-child(3) .svc-play-btn { background: rgba(255,20,147,0.18); color: #FF1493; }
+        .svc-demo-card:nth-child(3) .svc-play-btn:hover { background: #FF1493; color: #fff; }
+        .svc-demo-card:nth-child(3) .svc-progress-fill { background: linear-gradient(90deg,#FF1493,#EC00E8); }
+        .svc-demo-card:nth-child(3) .svc-progress-anim::after { background: linear-gradient(90deg,transparent,#FF1493,#EC00E8,transparent); }
+        .svc-demo-card:nth-child(3) .svc-code-block::after { color: #FF1493; }
+
+        /* Card 4 — R&D (orange) */
+        .svc-demo-card:nth-child(4) { border-top: 3px solid #D97706 !important; }
+        .svc-demo-card:nth-child(4) .svc-play-btn { background: rgba(245,158,11,0.18); color: #fbbf24; }
+        .svc-demo-card:nth-child(4) .svc-play-btn:hover { background: #D97706; color: #fff; }
+        .svc-demo-card:nth-child(4) .svc-progress-fill { background: linear-gradient(90deg,#D97706,#fbbf24); }
+        .svc-demo-card:nth-child(4) .svc-progress-anim::after { background: linear-gradient(90deg,transparent,#D97706,#fbbf24,transparent); }
+        .svc-demo-card:nth-child(4) .svc-code-block::after { color: #fbbf24; }
+
+        /* ── Reduced motion ── */
         @media (prefers-reduced-motion: reduce) {
           .svc-progress-anim::after { animation: none; }
           .svc-code-block::after    { animation: none; }
-          .svc-video { animation: none !important; }
         }
 
-        /* mobile: single column */
+        /* ── Mobile: stack vertically ── */
         @media (max-width: 768px) {
           .services-grid { grid-template-columns: 1fr !important; }
-          .svc-placeholder-screen { grid-template-columns: 1fr; }
-          .svc-code-block, .svc-demo-steps { grid-column: 1; }
+          .svc-placeholder-screen { grid-template-columns: 1fr; grid-template-rows: 22px 18px auto auto; }
+          .svc-code-block  { grid-column: 1; grid-row: 3; }
+          .svc-demo-steps  { grid-column: 1; grid-row: 4; }
+          .svc-video-placeholder { height: auto; }
           .svc-card-head { flex-wrap: wrap; }
           .svc-view-btn  { margin-left: 0; }
         }
@@ -1143,12 +1230,9 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
         <!-- Card 1 -->
         <div class="team-card animate-on-scroll animate-delay-1" data-metric="8" data-max="12">
           <div class="team-top-bar bar-pink"></div>
-          <div class="team-avatar av-grad-1">
-            <div class="av-inner">
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="50" cy="33" r="20" fill="rgba(255,255,255,0.35)"/>
-                <path d="M8,88 Q50,62 92,88" fill="rgba(255,255,255,0.3)"/>
-              </svg>
+          <div class="team-avatar av-grad-1" style="padding:0;overflow:hidden;background:none;">
+            <div class="av-inner" style="padding:0;width:100%;height:100%;">
+              <img src="assets/images/shilpa.jpeg" alt="Shilpa Reddy" style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:inherit;display:block;" />
             </div>
           </div>
           <h3>Shilpa Reddy</h3>
@@ -1180,20 +1264,13 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
           </div>
           <h3>Sandhya P</h3>
           <span class="team-role">Co-Founder &amp; CTO · Technology &amp; Innovation</span>
-          <p>Building the technical backbone that powers AI transformation across industries with precision and creativity.</p>
+          <p>Driving SelectAI's technology vision, AI engineering strategy, and product innovation. Specializing in Generative AI, cloud architecture, DevOps, and scalable software platforms, she leads the design and development of intelligent solutions that transform business challenges into practical, production-ready technology.</p>
           <div class="team-tags" aria-label="Areas of expertise">
             <span class="team-tag">AI Engineering</span>
             <span class="team-tag">Cloud Architecture</span>
             <span class="team-tag">DevOps</span>
             <span class="team-tag">Platform Engineering</span>
           </div>
-          <ul class="team-creds-list" aria-label="Certifications and credentials">
-            <li>AWS Certified Solutions Architect</li>
-            <li>Microsoft Azure Certified (AZ-104 / AZ-305 / AI-102)</li>
-            <li>Google Cloud Certified</li>
-            <li>CNCF Kubernetes / CKA</li>
-            <li>DevOps · Terraform · CI/CD Specialist</li>
-          </ul>
           <div class="badge badge-cyan">🔥 Tech Innovator</div>
           <span class="c-corner tl"></span><span class="c-corner tr"></span>
           <span class="c-corner bl"></span><span class="c-corner br"></span>
@@ -1418,7 +1495,7 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#hero" class="logo logo-img" aria-label="SelectAI home">
-            <img src="assets/images/logo-black.png" alt="SelectAI" height="44" width="auto" />
+            <img src="assets/images/logo-white.png" alt="SelectAI" height="44" width="auto" />
           </a>
           <p>Future Ready AI Solutions for Tomorrow's Challenges. Established by 2 Strong Women.</p>
         </div>

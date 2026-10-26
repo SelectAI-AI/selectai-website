@@ -492,9 +492,13 @@
     .tools-page .footer p  { color: rgba(255,255,255,.55) !important; opacity: 1 !important; }
     .tools-page .footer-bottom p { color: rgba(255,255,255,.35) !important; }
     .tools-page .back-top {
-      background: #fff !important; border: 1px solid var(--t-border) !important;
-      box-shadow: var(--t-shadow) !important;
+      background: linear-gradient(100deg,#FF1493,#EC00E8,#9900FF) !important;
+      border: none !important;
+      box-shadow: 0 4px 16px rgba(153,0,255,0.3) !important;
+      color: #fff !important;
+      font-size: 1.2rem !important;
     }
+    .tools-page .back-top img { filter: brightness(0) invert(1); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -1551,7 +1555,9 @@
     </div>
   </footer>
 
-  <a href="#" class="back-top" id="backTop" title="Back to top" aria-label="Back to top">↑</a>
+  <a href="#" class="back-top" id="backTop" title="Back to top" aria-label="Back to top">
+    <img src="assets/images/logo-mark.png" alt="Back to top" width="28" height="28" />
+  </a>
 
   <script src="js/api.js?v=20260609e"></script>
   <script src="js/main.js?v=20260625a"></script>

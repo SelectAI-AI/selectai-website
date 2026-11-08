@@ -34,6 +34,9 @@ app.use(helmet({
 }));
 /* Explicitly remove the X-Powered-By header (helmet does this too, belt-and-braces) */
 app.disable('x-powered-by');
+const DEV_ORIGINS = process.env.NODE_ENV !== 'production'
+  ? ['http://localhost:3000', 'http://localhost:5500', 'http://127.0.0.1:5500', 'http://127.0.0.1:3000', 'null']
+  : [];
 app.use(cors({
   origin: [
     process.env.FRONTEND_URL   || 'https://www.selectai.it.com',
@@ -42,7 +45,8 @@ app.use(cors({
     'https://www.selectai.com',
     'https://selectai.com',
     'http://selectai.it.com',
-    'http://3.7.130.187'
+    'http://3.7.130.187',
+    ...DEV_ORIGINS
   ],
   credentials: true
 }));

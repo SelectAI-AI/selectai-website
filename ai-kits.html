@@ -1394,7 +1394,6 @@
           <span class="ak-pricing-label">full bundle</span>
           <div class="ak-pricing-price">₹39,999</div>
           <p class="ak-pricing-desc">Every sellable kit plus the capstone — 8 modules.</p>
-          <a href="https://learn.selectai.it.com/kits" target="_blank" rel="noopener noreferrer" class="kits-btn-primary ak-pricing-btn">Buy bundle</a>
         </div>
         <div class="ak-pricing-card">
           <span class="ak-pricing-label">base kit</span>
@@ -1436,7 +1435,6 @@
             <span class="ak-kit-tag">rag-engineering</span>
           </div>
           <div class="ak-kit-price-val">₹9,999</div>
-          <a href="https://learn.selectai.it.com/kits" target="_blank" rel="noopener noreferrer" class="kits-btn-outline ak-kit-price-btn">Buy Foundations</a>
         </div>
 
         <div class="ak-kit-price-card animate-on-scroll animate-delay-2">
@@ -1446,7 +1444,6 @@
             <span class="ak-kit-tag">ai-guardrails</span>
           </div>
           <div class="ak-kit-price-val">₹9,999</div>
-          <a href="https://learn.selectai.it.com/kits" target="_blank" rel="noopener noreferrer" class="kits-btn-outline ak-kit-price-btn">Buy Agentic &amp; Guardrails</a>
         </div>
 
         <div class="ak-kit-price-card animate-on-scroll animate-delay-3">
@@ -1455,7 +1452,6 @@
             <span class="ak-kit-tag">MCP</span>
           </div>
           <div class="ak-kit-price-val">₹9,999</div>
-          <a href="https://learn.selectai.it.com/kits" target="_blank" rel="noopener noreferrer" class="kits-btn-outline ak-kit-price-btn">Buy MCP</a>
         </div>
 
         <div class="ak-kit-price-card animate-on-scroll animate-delay-4">
@@ -1464,7 +1460,6 @@
             <span class="ak-kit-tag">ai-ops</span>
           </div>
           <div class="ak-kit-price-val">₹9,999</div>
-          <a href="https://learn.selectai.it.com/kits" target="_blank" rel="noopener noreferrer" class="kits-btn-outline ak-kit-price-btn">Buy AI Ops</a>
         </div>
 
         <div class="ak-kit-price-card ak-kit-price-card--coming animate-on-scroll animate-delay-1">
@@ -1476,6 +1471,15 @@
         </div>
 
       </div>
+
+      <!-- ── Single Enroll CTA ── -->
+      <div class="ak-pricing-enroll-cta animate-on-scroll">
+        <a href="https://learn.selectai.it.com/kits" target="_blank" rel="noopener noreferrer" class="kits-btn-primary ak-pricing-enroll-btn">
+          Enroll Now
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -1674,11 +1678,16 @@
       color: var(--ak-text-2);
       margin: 0;
     }
-    .ak-kit-price-btn {
-      align-self: flex-start;
-      margin-top: auto;
-      font-size: 0.78rem !important;
-      padding: 0.5rem 1rem !important;
+
+    /* ── Single enroll CTA ── */
+    .ak-pricing-enroll-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+    .ak-pricing-enroll-btn {
+      font-size: 1rem !important;
+      padding: 0.85rem 2.8rem !important;
     }
 
     @media (max-width: 640px) {

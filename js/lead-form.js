@@ -2,10 +2,6 @@
 (function () {
   'use strict';
 
-  var config = window.SELECTAI_CONFIG || {};
-  var leadEndpoint = (config.leadEndpoint || '').trim();
-  var leadMethod = (config.leadMethod || 'POST').toUpperCase();
-
   var leadForm = document.getElementById('leadForm');
   var leadFeedback = document.getElementById('leadFeedback');
   var copyLeadBtn = document.getElementById('copyLead');
@@ -14,9 +10,9 @@
 
   function getLeadPayload() {
     return {
-      name: (document.getElementById('leadName') || {}).value || '',
-      email: (document.getElementById('leadEmail') || {}).value || '',
-      phone: (document.getElementById('leadPhone') || {}).value || '',
+      name:    (document.getElementById('leadName')    || {}).value || '',
+      email:   (document.getElementById('leadEmail')   || {}).value || '',
+      phone:   (document.getElementById('leadPhone')   || {}).value || '',
       company: (document.getElementById('leadCompany') || {}).value || '',
       message: (document.getElementById('leadMessage') || {}).value || ''
     };
@@ -30,7 +26,7 @@
   }
 
   function validateLead(payload) {
-    if (payload.name.trim().length < 2) return 'Please enter a valid name.';
+    if (payload.name.trim().length < 2)    return 'Please enter a valid name.';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email.trim())) return 'Please enter a valid email.';
     if (payload.message.trim().length < 10) return 'Please add a short project message (min 10 chars).';
     return '';
@@ -39,9 +35,9 @@
   function toLeadText(payload) {
     return [
       'New SelectAI Lead',
-      'Name: ' + payload.name,
-      'Email: ' + payload.email,
-      'Phone: ' + payload.phone,
+      'Name: '    + payload.name,
+      'Email: '   + payload.email,
+      'Phone: '   + payload.phone,
       'Company: ' + payload.company,
       'Message: ' + payload.message
     ].join('\n');
@@ -49,32 +45,8 @@
 
   function toMailto(payload) {
     var subject = encodeURIComponent('New Lead Inquiry - ' + payload.company);
-    var body = encodeURIComponent(toLeadText(payload));
+    var body    = encodeURIComponent(toLeadText(payload));
     window.location.href = 'mailto:info@selectai.it.com?subject=' + subject + '&body=' + body;
-  }
-
-  async function sendToEndpoint(payload) {
-    var controller = new AbortController();
-    var timeout = window.setTimeout(function () { controller.abort(); }, 8000);
-
-    try {
-      var res = await fetch(leadEndpoint, {
-        method: leadMethod,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload),
-        signal: controller.signal
-      });
-
-      if (!res.ok) {
-        throw new Error('Request failed with status ' + res.status);
-      }
-
-      return true;
-    } finally {
-      window.clearTimeout(timeout);
-    }
   }
 
   if (copyLeadBtn) {
@@ -92,49 +64,37 @@
     e.preventDefault();
 
     var payload = getLeadPayload();
-    var error = validateLead(payload);
-    if (error) {
-      setFeedback(error, true);
+    var validationError = validateLead(payload);
+    if (validationError) {
+      setFeedback(validationError, true);
       return;
     }
 
     try {
       localStorage.setItem('selectai-last-lead', JSON.stringify(payload));
-    } catch (storageError) {
-      // Ignore storage failures.
-    }
-
-    /* Save to backend MongoDB (fire-and-forget) */
-    saveEnquiryToApi(payload);
-
-    if (!leadEndpoint) {
-      toMailto(payload);
-      setFeedback('Inquiry prepared. Your email app is opening to send it.', false);
-      leadForm.reset();
-      return;
-    }
+    } catch (_) { /* ignore */ }
 
     setFeedback('Submitting your inquiry...', false);
 
-    try {
-      await sendToEndpoint(payload);
-      setFeedback('Thanks. Your inquiry has been submitted successfully.', false);
-      leadForm.reset();
-    } catch (submitError) {
-      toMailto(payload);
-      setFeedback('Endpoint unavailable. Opening email fallback to complete submission.', true);
-    }
-  });
-
-  /* ── Enquiry persistence via backend API ──────────────── */
-  function saveEnquiryToApi(payload) {
     var uid = (window.SELECTAI_USER && window.SELECTAI_USER.uid) ? window.SELECTAI_USER.uid : '';
 
+    /* Single API call — handles both saving and sending the email */
     if (window.SelectAI_API) {
-      SelectAI_API.submitEnquiry(Object.assign({}, payload, { userId: uid }))
-        .catch(function (err) {
-          console.warn('[SelectAI] Enquiry API error:', err.message);
-        });
+      try {
+        await SelectAI_API.submitEnquiry(Object.assign({}, payload, { userId: uid }));
+        setFeedback('Thanks. Your inquiry has been submitted successfully.', false);
+        leadForm.reset();
+      } catch (err) {
+        console.warn('[SelectAI] Enquiry API error:', err.message);
+        toMailto(payload);
+        setFeedback('Inquiry prepared. Your email app is opening to send it.', false);
+        leadForm.reset();
+      }
+    } else {
+      /* API not available — fall back to mailto */
+      toMailto(payload);
+      setFeedback('Inquiry prepared. Your email app is opening to send it.', false);
+      leadForm.reset();
     }
-  }
+  });
 }());

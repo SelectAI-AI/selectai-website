@@ -505,28 +505,27 @@
             </div>
             <a href="#connect" class="svc-view-btn">View Details →</a>
           </div>
-          <div class="svc-video-wrap" data-svc-video>
-            <video class="svc-video" muted playsinline preload="none"
-              poster="assets/images/logo-mark.png"
-              aria-label="IT Services demo animation">
-              <!-- Replace src with your actual video file -->
+          <div class="svc-video-wrap" data-svc-video data-svc-idx="0">
+            <video class="svc-video" muted playsinline preload="none" poster="assets/images/logo-mark.png" aria-label="IT Services demo animation">
               <source src="" type="video/mp4" />
             </video>
             <div class="svc-video-placeholder" aria-hidden="true">
               <div class="svc-placeholder-screen">
                 <div class="svc-placeholder-bar"></div>
                 <div class="svc-placeholder-row"><span class="svc-ph-tag blue">Terraform</span><span class="svc-ph-tag">Python</span><span class="svc-ph-tag">Bash</span></div>
-                <div class="svc-code-block"><span class="svc-code-comment"># Provision VPC on AWS</span>
-resource <span class="svc-code-str">"aws_vpc" "main"</span> {
-  cidr_block = <span class="svc-code-str">"10.0.0.0/16"</span>
-  tags = {
-    Name = <span class="svc-code-str">"selectai-vpc"</span>
-  }
-}</div>
-                <div class="svc-demo-steps"><strong>Demo Steps</strong>
-                  <ol><li>Provision cloud infrastructure</li><li>Deploy applications</li><li>Configure security</li><li>Enable monitoring</li><li>Auto-scaling setup</li></ol>
+                <div class="svc-code-block" data-svc-code></div>
+                <div class="svc-demo-steps">
+                  <strong>Demo Steps</strong>
+                  <ol>
+                    <li>Provision AWS VPC with Terraform</li>
+                    <li>Create subnets &amp; security groups</li>
+                    <li>Configure IAM roles &amp; policies</li>
+                    <li>Deploy EC2 instances &amp; RDS</li>
+                    <li>Enable CloudWatch monitoring</li>
+                  </ol>
                 </div>
               </div>
+              <div class="svc-success-msg" data-svc-success>✅ Infrastructure Successfully Deployed!</div>
               <div class="svc-progress-anim" data-svc-progress></div>
             </div>
             <div class="svc-video-controls" role="group" aria-label="Video controls">
@@ -534,9 +533,7 @@ resource <span class="svc-code-str">"aws_vpc" "main"</span> {
                 <svg class="svc-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
                 <svg class="svc-icon-pause" viewBox="0 0 16 16" fill="currentColor" style="display:none"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>
               </button>
-              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                <div class="svc-progress-fill" data-svc-fill></div>
-              </div>
+              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="svc-progress-fill" data-svc-fill></div></div>
               <span class="svc-time" data-svc-time>0:00 / 0:20</span>
               <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
               <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
@@ -554,29 +551,27 @@ resource <span class="svc-code-str">"aws_vpc" "main"</span> {
             </div>
             <a href="#connect" class="svc-view-btn">View Details →</a>
           </div>
-          <div class="svc-video-wrap" data-svc-video>
-            <video class="svc-video" muted playsinline preload="none"
-              poster="assets/images/logo-mark.png"
-              aria-label="SaaS Solutions demo animation">
+          <div class="svc-video-wrap" data-svc-video data-svc-idx="1">
+            <video class="svc-video" muted playsinline preload="none" poster="assets/images/logo-mark.png" aria-label="SaaS Solutions demo animation">
               <source src="" type="video/mp4" />
             </video>
             <div class="svc-video-placeholder" aria-hidden="true">
               <div class="svc-placeholder-screen">
                 <div class="svc-placeholder-bar"></div>
                 <div class="svc-placeholder-row"><span class="svc-ph-tag purple">Python</span><span class="svc-ph-tag">FastAPI</span><span class="svc-ph-tag">React</span></div>
-                <div class="svc-code-block"><span class="svc-code-comment"># Create API endpoint</span>
-from fastapi import FastAPI
-from pydantic import BaseModel
-
-app = FastAPI()
-
-<span class="svc-code-str">@app.post("/projects")</span>
-async def create_project(proj):
-  return {<span class="svc-code-str">"status"</span>: <span class="svc-code-str">"success"</span>}</div>
-                <div class="svc-demo-steps"><strong>Demo Steps</strong>
-                  <ol><li>User signup &amp; login</li><li>Create a new project</li><li>View real-time analytics</li><li>Manage team &amp; tasks</li><li>Deploy new feature</li></ol>
+                <div class="svc-code-block" data-svc-code></div>
+                <div class="svc-demo-steps">
+                  <strong>Demo Steps</strong>
+                  <ol>
+                    <li>Build FastAPI backend endpoint</li>
+                    <li>Create project via API call</li>
+                    <li>Load React dashboard UI</li>
+                    <li>Show real-time analytics</li>
+                    <li>Deploy to production</li>
+                  </ol>
                 </div>
               </div>
+              <div class="svc-success-msg" data-svc-success>✅ SaaS Application Successfully Deployed!</div>
               <div class="svc-progress-anim" data-svc-progress></div>
             </div>
             <div class="svc-video-controls" role="group" aria-label="Video controls">
@@ -584,9 +579,7 @@ async def create_project(proj):
                 <svg class="svc-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
                 <svg class="svc-icon-pause" viewBox="0 0 16 16" fill="currentColor" style="display:none"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>
               </button>
-              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                <div class="svc-progress-fill" data-svc-fill></div>
-              </div>
+              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="svc-progress-fill" data-svc-fill></div></div>
               <span class="svc-time" data-svc-time>0:00 / 0:20</span>
               <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
               <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
@@ -604,30 +597,27 @@ async def create_project(proj):
             </div>
             <a href="ai-kits.html" class="svc-view-btn">View Details →</a>
           </div>
-          <div class="svc-video-wrap" data-svc-video>
-            <video class="svc-video" muted playsinline preload="none"
-              poster="assets/images/logo-mark.png"
-              aria-label="AI Training demo animation">
+          <div class="svc-video-wrap" data-svc-video data-svc-idx="2">
+            <video class="svc-video" muted playsinline preload="none" poster="assets/images/logo-mark.png" aria-label="AI Training demo animation">
               <source src="" type="video/mp4" />
             </video>
             <div class="svc-video-placeholder" aria-hidden="true">
               <div class="svc-placeholder-screen">
                 <div class="svc-placeholder-bar"></div>
                 <div class="svc-placeholder-row"><span class="svc-ph-tag purple">Python</span><span class="svc-ph-tag">LangChain</span><span class="svc-ph-tag">OpenAI</span></div>
-                <div class="svc-code-block"><span class="svc-code-comment"># Load documents</span>
-from langchain.document_loaders
-  import DirectoryLoader
-
-loader = DirectoryLoader(<span class="svc-code-str">"data/"</span>)
-docs = loader.load()
-
-<span class="svc-code-comment"># Create embeddings</span>
-embeddings = OpenAIEmbeddings()
-vector_store = FAISS.from_docs</div>
-                <div class="svc-demo-steps"><strong>Demo Steps</strong>
-                  <ol><li>Open the AI kit</li><li>Follow guided lab</li><li>Run the code</li><li>See real-time output</li><li>Complete and get certificate</li></ol>
+                <div class="svc-code-block" data-svc-code></div>
+                <div class="svc-demo-steps">
+                  <strong>Demo Steps</strong>
+                  <ol>
+                    <li>Load Python &amp; LangChain libs</li>
+                    <li>Upload PDF learning material</li>
+                    <li>Generate document embeddings</li>
+                    <li>Build AI chatbot with LLM</li>
+                    <li>Ask question, get AI answer</li>
+                  </ol>
                 </div>
               </div>
+              <div class="svc-success-msg" data-svc-success>✅ AI Model Successfully Created!</div>
               <div class="svc-progress-anim" data-svc-progress></div>
             </div>
             <div class="svc-video-controls" role="group" aria-label="Video controls">
@@ -635,9 +625,7 @@ vector_store = FAISS.from_docs</div>
                 <svg class="svc-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
                 <svg class="svc-icon-pause" viewBox="0 0 16 16" fill="currentColor" style="display:none"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>
               </button>
-              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                <div class="svc-progress-fill" data-svc-fill></div>
-              </div>
+              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="svc-progress-fill" data-svc-fill></div></div>
               <span class="svc-time" data-svc-time>0:00 / 0:20</span>
               <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
               <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
@@ -655,28 +643,27 @@ vector_store = FAISS.from_docs</div>
             </div>
             <a href="#connect" class="svc-view-btn">View Details →</a>
           </div>
-          <div class="svc-video-wrap" data-svc-video>
-            <video class="svc-video" muted playsinline preload="none"
-              poster="assets/images/logo-mark.png"
-              aria-label="R&D Consultancy demo animation">
+          <div class="svc-video-wrap" data-svc-video data-svc-idx="3">
+            <video class="svc-video" muted playsinline preload="none" poster="assets/images/logo-mark.png" aria-label="R&D Consultancy demo animation">
               <source src="" type="video/mp4" />
             </video>
             <div class="svc-video-placeholder" aria-hidden="true">
               <div class="svc-placeholder-screen">
                 <div class="svc-placeholder-bar"></div>
                 <div class="svc-placeholder-row"><span class="svc-ph-tag orange">Python</span><span class="svc-ph-tag">Pandas</span><span class="svc-ph-tag">Scikit-learn</span></div>
-                <div class="svc-code-block"><span class="svc-code-comment"># Evaluate model performance</span>
-import pandas as pd
-from sklearn.metrics import
-  accuracy_score, classification
-
-y_pred = model.predict(X_test)
-accuracy = accuracy_score(y_test)
-print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
-                <div class="svc-demo-steps"><strong>Demo Steps</strong>
-                  <ol><li>Define business problem</li><li>Build and test prototype</li><li>Evaluate results</li><li>Create ROI analysis</li><li>Plan production rollout</li></ol>
+                <div class="svc-code-block" data-svc-code></div>
+                <div class="svc-demo-steps">
+                  <strong>Demo Steps</strong>
+                  <ol>
+                    <li>Load dataset with Pandas</li>
+                    <li>Clean &amp; preprocess data</li>
+                    <li>Train ML model</li>
+                    <li>Display accuracy &amp; graphs</li>
+                    <li>Generate predictions &amp; deploy</li>
+                  </ol>
                 </div>
               </div>
+              <div class="svc-success-msg" data-svc-success>✅ Model Training Completed Successfully!</div>
               <div class="svc-progress-anim" data-svc-progress></div>
             </div>
             <div class="svc-video-controls" role="group" aria-label="Video controls">
@@ -684,9 +671,7 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
                 <svg class="svc-icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
                 <svg class="svc-icon-pause" viewBox="0 0 16 16" fill="currentColor" style="display:none"><rect x="3" y="2" width="4" height="12"/><rect x="9" y="2" width="4" height="12"/></svg>
               </button>
-              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                <div class="svc-progress-fill" data-svc-fill></div>
-              </div>
+              <div class="svc-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="svc-progress-fill" data-svc-fill></div></div>
               <span class="svc-time" data-svc-time>0:00 / 0:20</span>
               <button class="svc-ctrl-btn svc-replay-btn" aria-label="Replay" data-svc-replay>↺</button>
               <button class="svc-ctrl-btn svc-fs-btn" aria-label="Fullscreen" data-svc-fs>⛶</button>
@@ -825,6 +810,7 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
         @keyframes svc-blink { 0%,100%{opacity:1} 50%{opacity:0} }
         .svc-code-comment { color: #6b7a8d; }
         .svc-code-str     { color: #ff9d6c; }
+        .svc-code-green   { color: #4ade80; }
 
         .svc-demo-steps {
           grid-column: 2;
@@ -930,6 +916,40 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
         .svc-demo-card:nth-child(4) .svc-progress-anim::after { background: linear-gradient(90deg,transparent,#D97706,#fbbf24,transparent); }
         .svc-demo-card:nth-child(4) .svc-code-block::after { color: #fbbf24; }
 
+        /* ── Success message ── */
+        .svc-success-msg {
+          display: none;
+          position: absolute;
+          inset: 0;
+          align-items: center;
+          justify-content: center;
+          background: rgba(13,17,23,0.92);
+          font-family: 'Orbitron', sans-serif;
+          font-size: 0.72rem;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          color: #22c55e;
+          text-align: center;
+          padding: 1rem;
+          animation: svc-success-pop 0.4s cubic-bezier(.22,1,.36,1);
+          z-index: 10;
+        }
+        .svc-success-msg.show {
+          display: flex;
+        }
+        @keyframes svc-success-pop {
+          from { opacity: 0; transform: scale(0.85); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+
+        /* ── Step active highlight ── */
+        .svc-demo-steps li.svc-step-active {
+          color: #fff !important;
+          font-weight: 700;
+        }
+        .svc-demo-steps li.svc-step-active::marker,
+        .svc-demo-steps li.svc-step-done { color: #22c55e !important; }
+
         /* ── Reduced motion ── */
         @media (prefers-reduced-motion: reduce) {
           .svc-progress-anim::after { animation: none; }
@@ -949,110 +969,369 @@ print(<span class="svc-code-str">f"Accuracy: {accuracy:.2f}"</span>)</div>
       </style>
 
       <script>
-      /* ── Service card animation controller ────────────── */
+      /* ── Service card storyboard animation ─────────────── */
       (function () {
         'use strict';
         var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var PHASE_DURATION = 4;
+        var TOTAL_DURATION = 20;
 
-        /* For each card with data-svc-video we run an animated demo
-           using the placeholder. If a real <video src> is provided it
-           takes over automatically. */
-        document.querySelectorAll('[data-svc-video]').forEach(function (wrap) {
-          var video      = wrap.querySelector('.svc-video');
-          var placeholder= wrap.querySelector('.svc-video-placeholder');
-          var playBtn    = wrap.querySelector('[data-svc-play]');
-          var replayBtn  = wrap.querySelector('[data-svc-replay]');
-          var fsBtn      = wrap.querySelector('[data-svc-fs]');
-          var fill       = wrap.querySelector('[data-svc-fill]');
-          var timeEl     = wrap.querySelector('[data-svc-time]');
-          var progressBar= wrap.querySelector('.svc-progress-bar');
-          var iconPlay   = playBtn && playBtn.querySelector('.svc-icon-play');
-          var iconPause  = playBtn && playBtn.querySelector('.svc-icon-pause');
+        /* 5 phases × 4s each = 20s per card */
+        var STORYBOARDS = [
+          /* 0 ── IT Services (Terraform / AWS) */
+          [
+            { step:0, lines:[
+              {t:'comment',v:'# Phase 1: Provision AWS VPC'},
+              {t:'plain',v:'resource "aws_vpc" "main" {'},
+              {t:'plain',v:'  cidr_block = '},{t:'str',v:'"10.0.0.0/16"'},
+              {t:'plain',v:'  tags = { Name = '},{t:'str',v:'"selectai-vpc"'},{t:'plain',v:' }'},
+              {t:'plain',v:'}'},
+            ]},
+            { step:1, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 2: Subnets'},
+              {t:'plain',v:'resource "aws_subnet" "pub" {'},
+              {t:'plain',v:'  cidr_block = '},{t:'str',v:'"10.0.1.0/24"'},
+              {t:'plain',v:'}'},
+              {t:'green',v:'✔ Subnet created successfully'},
+            ]},
+            { step:2, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 3: Security + IAM'},
+              {t:'plain',v:'resource "aws_security_group" "app" {'},
+              {t:'plain',v:'  ingress { from_port = 443 }'},
+              {t:'plain',v:'}'},
+              {t:'green',v:'✔ IAM roles configured'},
+            ]},
+            { step:3, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 4: Deploy EC2 + RDS'},
+              {t:'plain',v:'$ terraform apply -auto-approve'},
+              {t:'green',v:'✔ aws_instance.app: Created'},
+              {t:'green',v:'✔ aws_db_instance.rds: Created'},
+              {t:'green',v:'Apply complete! 12 resources added.'},
+            ]},
+            { step:4, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 5: CloudWatch + Auto-scale'},
+              {t:'plain',v:'$ aws cloudwatch put-metric-alarm \\'},
+              {t:'plain',v:'  --alarm-name CPUHigh --threshold 80'},
+              {t:'green',v:'✔ Auto-scaling policy attached'},
+              {t:'green',v:'✔ Infrastructure Successfully Deployed!'},
+            ]},
+          ],
 
+          /* 1 ── SaaS Solutions (FastAPI / React) */
+          [
+            { step:0, lines:[
+              {t:'comment',v:'# Phase 1: FastAPI endpoint code'},
+              {t:'plain',v:'from fastapi import FastAPI'},
+              {t:'plain',v:'from pydantic import BaseModel'},
+              {t:'plain',v:''},
+              {t:'plain',v:'app = FastAPI()'},
+              {t:'plain',v:''},
+              {t:'plain',v:'class Project(BaseModel):'},
+              {t:'plain',v:'  name: str'},
+              {t:'plain',v:'  owner: str'},
+            ]},
+            { step:1, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 2: API request & response'},
+              {t:'str',v:'@app.post("/api/projects")'},
+              {t:'plain',v:'async def create_project(p: Project):'},
+              {t:'plain',v:'  result = await db.insert(p)'},
+              {t:'plain',v:'  return {"id": result.id,'},
+              {t:'plain',v:'          "status": "created"}'},
+              {t:'green',v:'→ POST /api/projects  HTTP 201'},
+              {t:'green',v:'← {"id":"proj_01","status":"created"}'},
+            ]},
+            { step:2, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 3: React dashboard loads'},
+              {t:'plain',v:'$ npm install && npm run build'},
+              {t:'green',v:'✔ Compiled successfully  1.4 MB'},
+              {t:'plain',v:'$ npm run start'},
+              {t:'green',v:'✔ Ready on http://localhost:3000'},
+              {t:'green',v:'✔ Dashboard: Projects • Tasks • Users'},
+            ]},
+            { step:3, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 4: Real-time analytics'},
+              {t:'plain',v:'const ws = new WebSocket("/live")'},
+              {t:'green',v:'📊 Active Users  : 1,247  (+12%)'},
+              {t:'green',v:'📈 Revenue MTD   : $12,480 (+18%)'},
+              {t:'green',v:'✅ Tasks Done    : 342 / 400'},
+              {t:'green',v:'🚀 Uptime        : 99.98%'},
+            ]},
+            { step:4, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 5: Deploy & go live'},
+              {t:'plain',v:'$ docker build -t saas-app:v2 .'},
+              {t:'green',v:'✔ Image built  245 MB'},
+              {t:'plain',v:'$ kubectl apply -f deployment.yaml'},
+              {t:'green',v:'✔ Pods: 3/3 Running'},
+              {t:'green',v:'✔ Status: LIVE  — 0 errors'},
+            ]},
+          ],
+
+          /* 2 ── AI Training (LangChain / RAG) */
+          [
+            { step:0, lines:[
+              {t:'comment',v:'# Phase 1: Load Python & LangChain'},
+              {t:'plain',v:'from langchain.document_loaders'},
+              {t:'plain',v:'  import PyPDFLoader'},
+              {t:'plain',v:'from langchain.embeddings'},
+              {t:'plain',v:'  import OpenAIEmbeddings'},
+              {t:'plain',v:'from langchain.vectorstores import FAISS'},
+              {t:'green',v:'✔ Libraries loaded successfully'},
+            ]},
+            { step:1, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 2: Upload PDF material'},
+              {t:'plain',v:'loader = PyPDFLoader('},{t:'str',v:'"ai_guide.pdf"'},{t:'plain',v:')'},
+              {t:'plain',v:'docs = loader.load_and_split()'},
+              {t:'green',v:'📄 Uploading ai_guide.pdf ...'},
+              {t:'green',v:'✔ 42 pages loaded  |  186 chunks'},
+            ]},
+            { step:2, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 3: Generate embeddings'},
+              {t:'plain',v:'embeddings = OpenAIEmbeddings()'},
+              {t:'plain',v:'store = FAISS.from_documents('},
+              {t:'plain',v:'  docs, embeddings)'},
+              {t:'green',v:'🔢 chunk_001 → [0.42, -0.17, ...]'},
+              {t:'green',v:'🔢 chunk_002 → [0.38,  0.91, ...]'},
+              {t:'green',v:'✔ 186 vectors indexed in FAISS'},
+            ]},
+            { step:3, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 4: Build AI chatbot'},
+              {t:'plain',v:'llm = ChatOpenAI(model='},{t:'str',v:'"gpt-4o"'},{t:'plain',v:')'},
+              {t:'plain',v:'chain = RetrievalQA.from_chain_type('},
+              {t:'plain',v:'  llm=llm,'},
+              {t:'plain',v:'  retriever=store.as_retriever())'},
+              {t:'green',v:'🤖 AI processing ...'},
+              {t:'green',v:'✔ RAG chain ready'},
+            ]},
+            { step:4, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 5: Ask a question'},
+              {t:'str',v:'Q: "Explain RAG in simple terms"'},
+              {t:'plain',v:'response = chain.invoke(question)'},
+              {t:'green',v:'💬 RAG retrieves relevant chunks,'},
+              {t:'green',v:'   then generates a grounded answer'},
+              {t:'green',v:'   using the LLM context window.'},
+              {t:'green',v:'✔ Confidence: 96%'},
+            ]},
+          ],
+
+          /* 3 ── R&D Consultancy (Pandas / ML) */
+          [
+            { step:0, lines:[
+              {t:'comment',v:'# Phase 1: Load dataset'},
+              {t:'plain',v:'import pandas as pd'},
+              {t:'plain',v:'import numpy as np'},
+              {t:'plain',v:'df = pd.read_csv('},{t:'str',v:'"dataset.csv"'},{t:'plain',v:')'},
+              {t:'green',v:'✔ Loaded 50,000 rows x 24 cols'},
+              {t:'green',v:'   id  age  income  label'},
+              {t:'green',v:'0   1   34   72000      1'},
+              {t:'green',v:'1   2   28   48000      0'},
+            ]},
+            { step:1, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 2: Clean & preprocess'},
+              {t:'plain',v:'df.dropna(inplace=True)'},
+              {t:'plain',v:'df.drop_duplicates(inplace=True)'},
+              {t:'plain',v:'X = StandardScaler().fit_transform(df)'},
+              {t:'green',v:'✔ Nulls removed: 1,680 rows dropped'},
+              {t:'green',v:'✔ 48,320 clean samples ready'},
+            ]},
+            { step:2, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 3: Train ML model'},
+              {t:'plain',v:'from sklearn.ensemble import'},
+              {t:'plain',v:'  RandomForestClassifier'},
+              {t:'plain',v:'model = RandomForestClassifier('},
+              {t:'plain',v:'  n_estimators=100)'},
+              {t:'plain',v:'model.fit(X_train, y_train)'},
+              {t:'green',v:'🌲 Training... epoch 100/100'},
+              {t:'green',v:'✔ Training complete'},
+            ]},
+            { step:3, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 4: Accuracy & graphs'},
+              {t:'plain',v:'score = accuracy_score(y_test, pred)'},
+              {t:'green',v:'📊 Accuracy   : ████████░░  94.7%'},
+              {t:'green',v:'📊 Precision  : ████████░░  93.2%'},
+              {t:'green',v:'📊 Recall     : █████████░  95.1%'},
+              {t:'green',v:'📊 F1-Score   : ████████░░  94.1%'},
+            ]},
+            { step:4, lines:[
+              {t:'newline',v:''},
+              {t:'comment',v:'# Phase 5: Predictions & deploy'},
+              {t:'plain',v:'predictions = model.predict(X_new)'},
+              {t:'green',v:'🔮 Sample[0]: Class 1  (prob: 0.91)'},
+              {t:'green',v:'🔮 Sample[1]: Class 0  (prob: 0.87)'},
+              {t:'plain',v:'pickle.dump(model, open('},{t:'str',v:'"model.pkl"'},{t:'plain',v:',"wb"))'},
+              {t:'green',v:'✔ Model exported for production'},
+            ]},
+          ],
+        ];
+
+        /* ── Run the storyboard ── */
+        document.querySelectorAll('[data-svc-video]').forEach(function (wrap, cardIdx) {
+          var video       = wrap.querySelector('.svc-video');
+          var placeholder = wrap.querySelector('.svc-video-placeholder');
+          var codeBlock   = wrap.querySelector('[data-svc-code]') || wrap.querySelector('.svc-code-block');
+          var successEl   = wrap.querySelector('[data-svc-success]');
+          var stepsEl     = wrap.querySelector('.svc-demo-steps ol');
+          var playBtn     = wrap.querySelector('[data-svc-play]');
+          var replayBtn   = wrap.querySelector('[data-svc-replay]');
+          var fsBtn       = wrap.querySelector('[data-svc-fs]');
+          var fill        = wrap.querySelector('[data-svc-fill]');
+          var timeEl      = wrap.querySelector('[data-svc-time]');
+          var progressBar = wrap.querySelector('.svc-progress-bar');
+          var iconPlay    = playBtn && playBtn.querySelector('.svc-icon-play');
+          var iconPause   = playBtn && playBtn.querySelector('.svc-icon-pause');
+
+          var storyboard   = STORYBOARDS[parseInt(wrap.getAttribute('data-svc-idx')||cardIdx)] || STORYBOARDS[0];
           var hasRealVideo = video && video.querySelector('source[src]:not([src=""])');
-          var duration = parseInt((timeEl && timeEl.textContent.split('/')[1]) || '20') || 20;
           var current  = 0;
           var playing  = false;
           var raf      = null;
           var last     = null;
 
+          /* ── Typewriter ── */
+          var typedHTML  = '';
+          var typeTimer  = null;
+          var TYPE_SPEED = 22;
+          var LINE_PAUSE = 85;
+
+          function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+          function colour(type, text) {
+            var e = esc(text);
+            if (type==='comment') return '<span class="svc-code-comment">'+e+'</span>';
+            if (type==='str')     return '<span class="svc-code-str">'+e+'</span>';
+            if (type==='green')   return '<span class="svc-code-green">'+e+'</span>';
+            if (type==='newline') return '\n';
+            return e;
+          }
+
+          function typeChunk(tokens) {
+            var ti=0, ci=0;
+            function step() {
+              if (ti >= tokens.length) return;
+              var tok = tokens[ti];
+              if (tok.t === 'newline') {
+                typedHTML += '\n'; if(codeBlock) codeBlock.innerHTML = typedHTML;
+                ti++; ci=0; typeTimer=setTimeout(step, LINE_PAUSE); return;
+              }
+              if (ci < tok.v.length) {
+                ci++; if(codeBlock) codeBlock.innerHTML = typedHTML + colour(tok.t, tok.v.slice(0,ci));
+                typeTimer=setTimeout(step, TYPE_SPEED);
+              } else {
+                typedHTML += colour(tok.t, tok.v); ti++; ci=0;
+                if (ti < tokens.length && tokens[ti].t !== 'newline') { typedHTML+='\n'; if(codeBlock) codeBlock.innerHTML=typedHTML; }
+                var delay = (ti<tokens.length && tokens[ti].t==='comment') ? LINE_PAUSE*3 : TYPE_SPEED;
+                typeTimer=setTimeout(step, delay);
+              }
+            }
+            step();
+          }
+
+          /* ── Step highlighter ── */
+          var stepItems   = stepsEl ? Array.from(stepsEl.querySelectorAll('li')) : [];
+          var phaseTimers = [];
+
+          function runPhases() {
+            phaseTimers.forEach(clearTimeout); phaseTimers=[];
+            storyboard.forEach(function(phase, pIdx) {
+              phaseTimers.push(setTimeout(function() {
+                stepItems.forEach(function(li,i) {
+                  li.classList.toggle('svc-step-active', i===phase.step);
+                  li.classList.toggle('svc-step-done',   i<phase.step);
+                });
+                clearTimeout(typeTimer);
+                typeChunk(phase.lines);
+              }, pIdx * PHASE_DURATION * 1000));
+            });
+            /* success at end */
+            phaseTimers.push(setTimeout(function() {
+              if (successEl) successEl.classList.add('show');
+              stepItems.forEach(function(li){ li.classList.remove('svc-step-active'); li.classList.add('svc-step-done'); });
+            }, TOTAL_DURATION * 1000 - 500));
+          }
+
+          function resetAll() {
+            clearTimeout(typeTimer); phaseTimers.forEach(clearTimeout); phaseTimers=[];
+            typedHTML='';
+            if(codeBlock)  codeBlock.innerHTML='';
+            if(successEl)  successEl.classList.remove('show');
+            stepItems.forEach(function(li){ li.classList.remove('svc-step-active','svc-step-done'); });
+          }
+
+          /* ── Progress ticker ── */
           function setPlaying(state) {
-            playing = state;
-            if (iconPlay)  iconPlay.style.display  = state ? 'none'        : '';
-            if (iconPause) iconPause.style.display = state ? ''            : 'none';
-            if (hasRealVideo) { state ? video.play() : video.pause(); }
+            playing=state;
+            if(iconPlay)  iconPlay.style.display  = state?'none':'';
+            if(iconPause) iconPause.style.display = state?'':'none';
+            if(hasRealVideo){ state?video.play():video.pause(); }
           }
 
           function tick(ts) {
-            if (!last) last = ts;
-            var delta = (ts - last) / 1000;
-            last = ts;
-            current = Math.min(current + delta, duration);
-            var pct = (current / duration) * 100;
-            if (fill) { fill.style.width = pct + '%'; }
-            if (timeEl) {
-              var cur = Math.floor(current);
-              timeEl.textContent =
-                Math.floor(cur/60) + ':' + ('0'+cur%60).slice(-2) +
-                ' / ' +
-                Math.floor(duration/60) + ':' + ('0'+duration%60).slice(-2);
-            }
-            if (progressBar) progressBar.setAttribute('aria-valuenow', Math.round(pct));
-            if (current < duration && playing) {
-              raf = requestAnimationFrame(tick);
-            } else if (current >= duration) {
-              setPlaying(false);
-              last = null;
-            }
+            if(!last) last=ts;
+            var delta=(ts-last)/1000; last=ts;
+            current=Math.min(current+delta, TOTAL_DURATION);
+            var pct=(current/TOTAL_DURATION)*100;
+            if(fill)        fill.style.width=pct+'%';
+            if(progressBar) progressBar.setAttribute('aria-valuenow', Math.round(pct));
+            if(timeEl){ var c=Math.floor(current); timeEl.textContent=Math.floor(c/60)+':'+('0'+c%60).slice(-2)+' / 0:20'; }
+            if(current<TOTAL_DURATION && playing){ raf=requestAnimationFrame(tick); }
+            else if(current>=TOTAL_DURATION){ setPlaying(false); last=null; }
           }
 
-          function play()  { if (!playing) { setPlaying(true); last = null; raf = requestAnimationFrame(tick); } }
-          function pause() { if (playing)  { setPlaying(false); cancelAnimationFrame(raf); } }
-          function replay(){ current = 0; last = null; if (fill) fill.style.width = '0%'; play(); }
+          function play() {
+            if(playing) return;
+            setPlaying(true); last=null; raf=requestAnimationFrame(tick);
+            if(!prefersReduced) runPhases();
+          }
+          function pause() {
+            if(!playing) return;
+            setPlaying(false); cancelAnimationFrame(raf);
+            clearTimeout(typeTimer); phaseTimers.forEach(clearTimeout);
+          }
+          function replay() {
+            pause(); current=0; last=null;
+            if(fill) fill.style.width='0%';
+            resetAll(); play();
+          }
 
-          if (playBtn)  playBtn.addEventListener('click',  function () { playing ? pause() : play(); });
-          if (replayBtn)replayBtn.addEventListener('click', replay);
-          if (fsBtn) {
-            fsBtn.addEventListener('click', function () {
-              var target = hasRealVideo ? video : wrap;
-              if (document.fullscreenElement) {
-                document.exitFullscreen();
-              } else {
-                target.requestFullscreen && target.requestFullscreen();
-              }
+          if(playBtn)   playBtn.addEventListener('click',   function(){ playing?pause():play(); });
+          if(replayBtn) replayBtn.addEventListener('click', replay);
+          if(fsBtn) {
+            fsBtn.addEventListener('click', function(){
+              var target=hasRealVideo?video:wrap;
+              if(document.fullscreenElement) document.exitFullscreen();
+              else if(target.requestFullscreen) target.requestFullscreen();
             });
           }
-
-          /* click on progress bar to seek */
-          if (progressBar) {
-            progressBar.addEventListener('click', function (e) {
-              var rect = progressBar.getBoundingClientRect();
-              var pct  = (e.clientX - rect.left) / rect.width;
-              current  = pct * duration;
-              if (hasRealVideo) video.currentTime = current;
-              last = null;
+          if(progressBar) {
+            progressBar.addEventListener('click', function(e){
+              var rect=progressBar.getBoundingClientRect();
+              current=((e.clientX-rect.left)/rect.width)*TOTAL_DURATION;
+              if(hasRealVideo) video.currentTime=current;
+              last=null;
             });
           }
-
-          /* sync real video time → progress bar */
-          if (hasRealVideo) {
-            video.addEventListener('timeupdate', function () {
-              current  = video.currentTime;
-              duration = video.duration || duration;
-              var pct  = (current / duration) * 100;
-              if (fill) fill.style.width = pct + '%';
-            });
-            video.addEventListener('ended', function () { setPlaying(false); });
-            if (placeholder) placeholder.style.display = 'none';
+          if(hasRealVideo) {
+            video.addEventListener('timeupdate', function(){ current=video.currentTime; if(fill) fill.style.width=((current/TOTAL_DURATION)*100)+'%'; });
+            video.addEventListener('ended', function(){ setPlaying(false); });
+            if(placeholder) placeholder.style.display='none';
           }
 
-          /* IntersectionObserver: play on enter, pause on leave */
-          if (!prefersReduced) {
-            var io = new IntersectionObserver(function (entries) {
-              entries.forEach(function (e) {
-                if (e.isIntersecting) { play(); }
-                else                  { pause(); }
-              });
+          if(!prefersReduced) {
+            var io = new IntersectionObserver(function(entries) {
+              entries.forEach(function(e){ if(e.isIntersecting) play(); else pause(); });
             }, { threshold: 0.4 });
             io.observe(wrap);
           }

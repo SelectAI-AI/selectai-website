@@ -1218,6 +1218,9 @@
           }
 
           function typeChunk(tokens) {
+            /* clear code block for each new phase */
+            typedHTML = '';
+            if(codeBlock) codeBlock.innerHTML = '';
             var ti=0, ci=0;
             function step() {
               if (ti >= tokens.length) return;

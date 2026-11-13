@@ -794,8 +794,8 @@
           grid-column: 1;
           grid-row: 3;
           font-family: 'Space Grotesk', monospace;
-          font-size: 0.58rem; line-height: 1.5;
-          color: rgba(255,255,255,0.65);
+          font-size: 0.58rem; line-height: 1.6;
+          color: rgba(255,255,255,0.88);
           background: rgba(255,255,255,0.05);
           border-radius: 6px; padding: 0.45rem 0.6rem;
           white-space: pre; overflow: hidden;
@@ -1259,6 +1259,8 @@
             phaseTimers.push(setTimeout(function() {
               if (successEl) successEl.classList.add('show');
               stepItems.forEach(function(li){ li.classList.remove('svc-step-active'); li.classList.add('svc-step-done'); });
+              /* hide success banner before auto-replay */
+              setTimeout(function(){ if(successEl) successEl.classList.remove('show'); }, 1800);
             }, TOTAL_DURATION * 1000 - 500));
           }
 
@@ -1287,7 +1289,13 @@
             if(progressBar) progressBar.setAttribute('aria-valuenow', Math.round(pct));
             if(timeEl){ var c=Math.floor(current); timeEl.textContent=Math.floor(c/60)+':'+('0'+c%60).slice(-2)+' / 0:20'; }
             if(current<TOTAL_DURATION && playing){ raf=requestAnimationFrame(tick); }
-            else if(current>=TOTAL_DURATION){ setPlaying(false); last=null; }
+            else if(current>=TOTAL_DURATION){
+              setPlaying(false); last=null;
+              /* auto-replay after 2s pause */
+              if(!prefersReduced) {
+                setTimeout(function(){ replay(); }, 2000);
+              }
+            }
           }
 
           function play() {
@@ -1331,8 +1339,15 @@
 
           if(!prefersReduced) {
             var io = new IntersectionObserver(function(entries) {
-              entries.forEach(function(e){ if(e.isIntersecting) play(); else pause(); });
-            }, { threshold: 0.4 });
+              entries.forEach(function(e){
+                if(e.isIntersecting) {
+                  /* restart fresh each time card enters view */
+                  replay();
+                } else {
+                  pause();
+                }
+              });
+            }, { threshold: 0.25 });
             io.observe(wrap);
           }
         });
